@@ -39,7 +39,4 @@ set shiftwidth=2               " Indent with specific whitespace
 set backspace=indent,eol,start " Enable backspace in Insert Mode
 
 " Colorscheme ------------------------------------------------------------------
-colorscheme 256_noir           " Set specified colorscheme 
-
-" Python -----------------------------------------------------------------------
-autocmd FileType python setlocal set ts=4 sts=4 sw=4 makeprg=python3\ %
+colorscheme noired           " Set specified colorscheme 

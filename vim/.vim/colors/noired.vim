@@ -1,10 +1,8 @@
 " Vim color file
-" Name:       256_noir.vim
-" Maintainer: Andreas van Cranenburgh <andreas@unstable.nl>
-" Homepage:   https://github.com/andreasvc/vim-256noir/
+" Name:       noired.vim
+" Maintainer: Francisco Cornejo-Garcia <franciscornejo.garcia@gmail.com>
 
-" Basically: dark background, numerals & errors red,
-" rest different shades of gray.
+" A minimalistic monochrome dark theme with red numerals and strings
 "
 " colors 232--250 are shades of gray, from dark to light;
 " 16=black, 255=white, 196=red, 88=darkred.
@@ -18,7 +16,7 @@ if version > 580
         syntax reset
     endif
 endif
-let g:colors_name = "256_noir"
+let g:colors_name = "noired"
 
 if has("gui_running") || &t_Co == 256
     hi Normal           cterm=NONE ctermfg=250 ctermbg=16  gui=NONE guifg=#bcbcbc guibg=#000000

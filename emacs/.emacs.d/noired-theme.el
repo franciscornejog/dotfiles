@@ -1,7 +1,7 @@
 (require 'autothemer)
 
 (autothemer-deftheme
- noired "A minimalistic monochrome dark theme with red highlights"
+ noired "A minimalistic monochrome dark theme with red numerals and strings"
 
  ((((class color) (min-colors #xFFFFFF))) ;; Support Emacs GUI
   ;; Color palette
