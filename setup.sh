@@ -5,6 +5,7 @@ apps=(
     git
     vim
     tmux
+    emacs
 )
 
 stowin() {
