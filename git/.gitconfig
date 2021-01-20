@@ -1,0 +1,10 @@
+[user]
+    email = franciscornejo.garcia@gmail.com
+    name = Francisco Cornejo-Garcia
+[github]
+    user = franciscornejogarcia
+[alias]
+    s = status
+    a = add
+    cm = commit -m
+    pom = push origin master

@@ -1,0 +1,45 @@
+" Personal Vim Configuration
+"
+" Maintainer:  Francisco Cornejo-Garcia
+" Last change: 2020 Dec 19
+"
+" Default ----------------------------------------------------------------------
+set nocompatible               " Enable vim settings
+filetype indent plugin on      " Enable filetype detection and plugins
+syntax enable                  " Enable syntax highlighting
+
+" Editor -----------------------------------------------------------------------
+set cursorline                 " Highlight cursor line
+set colorcolumn=80             " Highlight column line
+set cursorcolumn               " Highlight cusor column
+set number                     " Show line numbers
+set ruler                      " Show cursor position
+set wildmenu                   " Show completion matches in status line
+set fillchars=vert:\ ,fold:-   " Simplify vertical split
+
+" Search -----------------------------------------------------------------------
+set hlsearch                   " Highlight matches
+set ignorecase                 " Ignore cases
+set incsearch                  " Show partial matches 
+set smartcase                  " Enable smart search
+
+" Text -------------------------------------------------------------------------
+set linebreak                  " Wrap lines
+set textwidth=80               " Set line width to 80 chars
+
+" Whitespace -------------------------------------------------------------------
+set autoindent                 " Autoindent
+set smartindent                " Smart indent
+set cindent                    " Enable indent in C
+set expandtab                  " Turn tab to spaces
+set smarttab                   " Enable smarter tab
+set tabstop=2                  " Set tab width
+set softtabstop=2              " Set specific whitespace
+set shiftwidth=2               " Indent with specific whitespace
+set backspace=indent,eol,start " Enable backspace in Insert Mode
+
+" Colorscheme ------------------------------------------------------------------
+colorscheme 256_noir           " Set specified colorscheme 
+
+" Python -----------------------------------------------------------------------
+autocmd FileType python setlocal set ts=4 sts=4 sw=4 makeprg=python3\ %

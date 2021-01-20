@@ -1,0 +1,401 @@
+#+title: Emacs Configuration
+#+author: Francisco Cornejo-Garcia
+#+property: header-args:emacs-lisp :tangle ./init.el :mkdirp yes :results output silent
+
+* Garbage Collection
+  #+begin_src emacs-lisp
+
+    (setq gc-cons-threshold most-positive-fixnum) ; Reduce collection frequency
+    ;; Return to normal after init
+    (add-hook 'after-init-hook #'(lambda () (setq gc-cons-threshold 800000)))
+
+  #+end_src
+
+* User Interface
+** Graphical
+   #+begin_src emacs-lisp
+
+     (setq inhibit-startup-message t)     ; Disable startup message
+     (setq initial-scratch-message nil)   ; Disable scratch message
+     (menu-bar-mode -1)                   ; Disable menu bar
+     (scroll-bar-mode -1)                 ; Disable scroll bar
+     (tool-bar-mode -1)                   ; Disable tool bar
+     ;; Merge OS titlebar with Emacs
+     (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
+
+   #+end_src
+
+** Textual
+   #+begin_src emacs-lisp
+
+     (blink-cursor-mode -1)               ; Disable blinking cursor
+     (show-paren-mode 1)                  ; Enable paren mode
+     (global-hl-line-mode 1)              ; Enable hl mode
+     (column-number-mode)                 ; View column location
+     (fset 'yes-or-no-p 'y-or-n-p)        ; Simplify yes/no prompts
+     (global-auto-revert-mode t)          ; Auto update buffer
+     (setq-default  indent-tabs-mode nil  ; Convert tabs to spaces
+                    tab-width 2)          ; Set tab width
+     (set-face-attribute 'default nil :font "Inconsolata" :height 135)
+
+   #+end_src
+
+* Transient Files
+  #+begin_src emacs-lisp
+
+    (setq custom-file "~/.emacs.d/custom.el")
+    (load custom-file nil t)
+    (setq make-backup-files nil)         ; Disable backup files
+    (setq create-lockfiles nil)          ; Disable lockfiles
+    (setq version-control t)             ; Enable version control
+    (setq auto-save-file-name-transforms
+          `((".*" ,temporary-file-directory t)))
+
+  #+end_src
+
+* Packages
+** Package
+   #+begin_src emacs-lisp
+
+     (require 'package)                   ; Enable package
+     (setq package-enable-at-startup nil) ; Do not start package at init
+
+     ;; Access repositories
+     (setq package-archives '(("melpa" . "https://melpa.org/packages/")
+            ("elpa" . "https://elpa.gnu.org/packages/")
+            ("org" . "https://orgmode.org/elpa/")))
+
+     (package-initialize)                 ; Initialize package
+
+   #+end_src
+
+** Use Package
+   #+begin_src emacs-lisp
+
+     ;; Install use-package
+     (unless (package-installed-p 'use-package)
+       (package-refresh-contents)
+       (package-install 'use-package))
+     (eval-when-compile
+       (require 'use-package))            ; Enable use-package
+     (setq use-package-always-ensure t)   ; Ensure packages are loaded
+
+   #+end_src
+
+** Tramp
+   #+begin_src emacs-lisp
+
+     (setq tramp-default-method "ssh")
+
+   #+end_src
+
+** Diminish - hide minor modes
+   #+begin_src emacs-lisp
+
+     (use-package diminish)
+     (eval-after-load "eldoc"
+       '(diminish 'eldoc-mode))
+     (diminish 'abbrev-mode)
+
+   #+end_src
+
+** Autothemer - easier theming
+   #+begin_src emacs-lisp
+
+     (use-package autothemer)
+     (load-theme 'noired t)               ; Load theme
+
+   #+end_src
+
+** Ivy - general completition
+   #+begin_src emacs-lisp
+
+     (use-package ivy
+       :bind (("C-s" . swiper)
+        :map ivy-minibuffer-map
+        ("TAB" . ivy-alt-done)
+        ("C-l" . ivy-alt-done)
+        ("C-j" . ivy-next-line)
+        ("C-k" . ivy-previous-line)
+        :map ivy-switch-buffer-map
+        ("C-k" . ivy-previous-line)
+        ("C-l" . ivy-done)
+        ("C-d" . ivy-switch-buffer-kill)
+        :map ivy-reverse-i-search-map
+        ("C-k" . ivy-previous-line)
+        ("C-d" . ivy-reverse-i-search-kill))
+       :init
+       (ivy-mode 1))
+
+   #+end_src
+
+** Counsel - adds functionality to Emacs commands
+   #+begin_src emacs-lisp
+
+     (use-package counsel
+       :bind (("M-x" . counsel-M-x))
+       :config
+       ;; Remove ^ from searches
+       (setq ivy-initial-inputs-alist nil))
+
+   #+end_src
+
+** Ivy Rich - add helpful context
+   #+begin_src emacs-lisp
+
+     (use-package ivy-rich
+       :init (ivy-rich-mode 1))
+
+   #+end_src
+
+** Helpful - better help context
+   #+begin_src emacs-lisp
+
+     (use-package helpful
+       :custom
+       (counsel-describe-function-function #'helpful-callable)
+       (counsel-describe-variable-function #'helpful-variable)
+       :bind
+       ([remap describe-function] . counsel-describe-function)
+       ([remap describe-command] . helpful-command)
+       ([remap describe-variable] . counsel-describe-variable)
+       ([remap describe-key] . helpful-key))
+
+   #+end_src
+
+** Rainbow - add colors
+   #+begin_src emacs-lisp
+
+     (use-package rainbow-mode)
+
+   #+end_src
+
+** Highlight Numbers
+   #+begin_src emacs-lisp
+
+     (use-package highlight-numbers
+       :init (highlight-numbers-mode 1))
+
+   #+end_src
+** Which Key - view keybindings
+   #+begin_src emacs-lisp
+
+     (use-package which-key
+       :init (which-key-mode)           ; enable which key
+       :diminish which-key-mode         ; hide minor mode
+       :config
+       ;; set delay
+       (setq which-key-idle-delay 0.3))
+
+   #+end_src
+
+** Evil - vim mode
+   #+begin_src emacs-lisp
+
+     (use-package evil
+       :init
+       (setq evil-want-keybinding nil) ; disable for evil collection
+       :config
+       (evil-mode 1)                   ; enable evil mode
+       ;; Ex Commands
+       (evil-ex-define-cmd "E[xplore]" 'dired-jump))
+
+   #+end_src
+
+** Evil Collection - extended vim mode
+   #+begin_src emacs-lisp
+
+     (use-package evil-collection
+       :after evil
+       :config
+       (evil-collection-init))         ; enable evil collection mode
+
+   #+end_src
+
+** General - easier keybindings
+   #+begin_src emacs-lisp
+
+     (use-package general
+       :config
+       (general-evil-setup t)
+
+       ;; leader
+       (general-create-definer
+         fjcg/global-leader
+         :keymaps '(normal visual)
+         :prefix "SPC")
+
+       (general-create-definer
+         fjcg/local-leader
+         :keymaps '(normal insert visual)
+         :prefix "SPC SPC")
+
+       (fjcg/global-leader
+         "d"   '(:ignore t :which-key "deft")
+         "dd"  '(deft :which-key "deft")
+         "df"  '(deft-find-file :which-key "deft-find-file")
+
+         "e"   '(eval-last-sexp :which-key "eval-last-sexp")
+
+         "f"   '(:ignore t :which-key "files")
+         "fd"  '(:ignore t :which-key "dotfiles")
+         "fdi"
+         '((lambda () (interactive) (find-file "~/.emacs.d/init.org"))
+           :which-key "init")
+         "ff"  '(counsel-find-file :which-key "counsel-find-file")
+         "fj"  '(counsel-file-jump :which-key "counsel-file-jump")
+         "fr"  '(counsel-recentf :which-key "counsel-recentf")
+         "fR"  '(rename-file :which-key "rename-file")
+
+         "h"   '(help-command :which-key "help-command")
+
+         "t"   '(:ignore t :which-key "theme")
+         "tt"
+         '((lambda () (interactive) (find-file "~/.emacs.d/noired-theme.el"))
+         :which-key "theme")
+         "tl"  '(counsel-load-theme :which-key "counsel-load-theme")
+         "tf"  '(:ignore t :which-key "faces")
+         "tfd" '(counsel-describe-face :which-key "counsel-describe-face"))
+
+       ;; Org
+       (fjcg/local-leader
+         'normal org-mode-map
+         "'"  '(org-edit-special :which-key "org-edit-special")
+         "c"  '(org-ctrl-c-ctrl-c :which-key "org-ctr-c-ctrl-c")
+         "o"  '(org-open-at-point :which-key "org-open-at-point")
+         "l"  '(:ignore t :which-key "links")
+         "li" '(org-insert-link :which-key "org-insert-link")
+         "lt" '(org-toggle-link-display :which-key "org-toggle-link-display"))
+
+       ;; Org Roam
+       (fjcg/local-leader
+        :definer 'minor-mode
+        :states 'normal
+        :keymaps 'org-roam-mode
+        "r"   '(:ignore t :which-key "roam")
+        "ri"  '(org-roam-insert :which-key "org-roam-insert"))
+
+       ;; Org Src
+       (fjcg/local-leader
+        :definer 'minor-mode
+        :states 'normal
+        :keymaps 'org-src-mode
+        "'"  '(org-edit-src-exit :which-key "org-edit-src-exit")
+        "k"  '(org-edit-src-abort :which-key "org-edit-src-abort")
+        "s"  '(org-edit-src-save :which-key "org-edit-src-save"))
+
+       ;; Deft
+       (general-def 'normal deft-mode-map
+         "df"   'deft-find-file
+         "dd"   'deft-delete-file
+         "dr"   'deft-rename-file
+         "l"    'deft-complete)
+
+       ;; Dired
+       (general-def 'normal dired-mode-map
+         "h" 'dired-up-directory
+         "l" 'dired-find-file)
+       )
+
+   #+end_src
+
+** Deft - text file navigation
+   #+begin_src emacs-lisp
+
+     (use-package deft
+       :after org
+       :custom
+       (deft-use-filter-string-for-filename t)
+       (deft-file-naming-rules '((nospace . "-")
+                                 (case-fn . downcase)))
+       (deft-default-extension "txt")
+       (deft-directory "~/Documents/bujo"))
+
+   #+end_src
+
+** Org - file format
+   #+begin_src emacs-lisp :results output silent
+
+     (use-package org
+       :mode ("\\.txt\\'" . org-mode)      ; read text files into org mode
+       :config
+       (setq org-src-fontify-natively t
+             org-src-tab-acts-natively t
+             org-src-preserve-indentation nil
+             org-src-window-setup 'current-window))
+
+     ;; Hook for org mode
+     (add-hook 'org-mode-hook
+               '(lambda ()
+                  (global-visual-line-mode 1)
+                  (auto-fill-mode 1)
+                  (set-fill-column 80)
+                  (display-fill-column-indicator-mode 1)))
+
+     ;; Show line numbers in programming modes
+     (add-hook 'prog-mode-hook
+               '(lambda ()
+                  (display-line-numbers-mode 1)
+                  (global-visual-line-mode 1)
+                  (auto-fill-mode 1)
+                  (set-fill-column 80)
+                  (display-fill-column-indicator-mode 1)))
+
+     (setq org-confirm-babel-evaluate nil)
+     (org-babel-do-load-languages
+      'org-babel-load-languages
+      '((emacs-lisp . t)
+        (C . t)
+        (shell . t)
+        (css . t)))
+
+     ;; Org Structure Templates - autocomplete templates
+     (require 'org-tempo)
+     (add-to-list 'org-structure-template-alist '("el" . "src emacs-lisp"))
+     (add-to-list 'org-structure-template-alist '("cc" . "src C"))
+     (add-to-list 'org-structure-template-alist '("cpp" . "src C++"))
+     (add-to-list 'org-structure-template-alist '("py" . "src python"))
+     (add-to-list 'org-structure-template-alist '("sh" . "src shell"))
+     (add-to-list 'org-structure-template-alist '("css" . "src css"))
+
+     ;; Org Tangle
+     (defun fjcg/org-babel-tangle-config ()
+       (when (string-equal (buffer-file-name)
+                           (expand-file-name "~/.emacs.d/init.org"))
+         (let ((org-confirm-babel-evaluate nil))
+           (org-babel-tangle))))
+     (add-hook 'org-mode-hook
+               (lambda () (add-hook 'after-save-hook
+                                    #'fjcg/org-babel-tangle-config)))
+
+     (use-package org-bullets
+       :after org
+       :hook (org-mode . org-bullets-mode)
+       :custom
+       (org-bullets-bullet-list '("◉" "○" "●" "○" "●" "○" "●")))
+
+   #+end_src
+
+** Org Roam
+   #+begin_src emacs-lisp
+
+     (use-package org-roam
+       :hook (after-init . org-roam-mode)
+       :custom
+       (org-roam-directory "~/Documents/bujo/")
+       (org-roam-file-extensions '("txt")))
+
+   #+end_src
+
+** Org Roam Server
+   #+begin_src emacs-lisp
+
+     (require 'simple-httpd)
+     (setq httpd-root "/var/www")
+     (httpd-start)
+
+     (use-package org-roam-server
+       :ensure nil
+       :load-path "~/Documents/bujo")
+
+   #+end_src
