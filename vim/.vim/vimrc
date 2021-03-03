@@ -33,9 +33,9 @@ set smartindent                " Smart indent
 set cindent                    " Enable indent in C
 set expandtab                  " Turn tab to spaces
 set smarttab                   " Enable smarter tab
-set tabstop=2                  " Set tab width
-set softtabstop=2              " Set specific whitespace
-set shiftwidth=2               " Indent with specific whitespace
+set tabstop=4                  " Set tab width
+set softtabstop=4              " Set specific whitespace
+set shiftwidth=4               " Indent with specific whitespace
 set backspace=indent,eol,start " Enable backspace in Insert Mode
 
 " Colorscheme ------------------------------------------------------------------
