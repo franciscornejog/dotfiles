@@ -1,5 +1,3 @@
-#!/usr/bin/env zsh
-
 # list of apps
 apps=(
     git
@@ -15,10 +13,6 @@ stowin() {
     stow -v -R -t ${target} ${app}
 }
 
-echo "\nStowing:"
 for app in ${apps[@]}; do
     stowin "${HOME}" $app
 done
-
-echo "\nDone"
-    
