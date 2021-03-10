@@ -1,6 +1,6 @@
 #+title: Noired Theme
 #+author: Francisco Cornejo-Garcia
-#+property: header-args:emacs-lisp :tangle ./noired-theme.el :mkdirp yes
+#+property: header-args:emacs-lisp :tangle yes :mkdirp yes
 
 * Setup
   #+begin_src emacs-lisp

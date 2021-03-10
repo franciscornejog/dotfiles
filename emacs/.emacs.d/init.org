@@ -1,38 +1,6 @@
 #+title: Emacs Configuration
 #+author: Francisco Cornejo-Garcia
-#+property: header-args:emacs-lisp :tangle ./init.el :mkdirp yes :results output silent
-* User Interface
-   #+begin_src emacs-lisp
-     (menu-bar-mode -1)                   ; disable menu bar
-     (scroll-bar-mode -1)                 ; disable scroll bar
-     (tool-bar-mode -1)                   ; disable tool bar
-     (show-paren-mode 1)                  ; enable paren mode
-     (global-hl-line-mode 1)              ; enable hl mode
-     (column-number-mode)                 ; view column location
-     (fset 'yes-or-no-p 'y-or-n-p)        ; simplify yes/no prompts
-     (global-auto-revert-mode t)          ; auto update buffer
-     (setq-default indent-tabs-mode nil)  ; convert tabs to spaces
-     (setq ring-bell-function 'ignore)    ; disable bell indicators
-     (load-theme 'noired t)               ; load theme
-
-     ;; set font
-     (set-face-attribute 'default nil :font "Inconsolata" :height 135)
-
-     ;; merge OS titlebar with Emacs
-     (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
-   #+end_src
-* Files
-  #+begin_src emacs-lisp
-    (setq tramp-default-method "ssh")         ; set ssh method for tramp
-    (setq custom-file "~/.emacs.d/custom.el") ; set custom file
-    (load custom-file nil t)                  ; ???
-    (setq make-backup-files nil)              ; disable backup files
-    (setq create-lockfiles nil)               ; disable lockfiles
-    (setq version-control t)                  ; enable version control
-    (setq auto-save-file-name-transforms      ; autosave in tmp directory
-          `((".*" ,temporary-file-directory t)))
-    (setq c-default-style "stroustrup")
-  #+end_src
+#+property: header-args:emacs-lisp :tangle yes :mkdirp yes 
 * Package
   #+begin_src emacs-lisp
     (require 'package)                   ; enable package
@@ -42,6 +10,49 @@
             ("elpa" . "https://elpa.gnu.org/packages/")
             ("org" . "https://orgmode.org/elpa/")))
     (package-initialize)                 ; initialize package
+  #+end_src
+* EXWM
+  #+begin_src emacs-lisp
+    (require 'exwm)
+    (require 'exwm-config)
+    (exwm-config-default)
+    (toggle-frame-fullscreen)
+  #+end_src
+* User Interface
+  #+begin_src emacs-lisp
+    (menu-bar-mode -1)                   ; disable menu bar
+    (scroll-bar-mode -1)                 ; disable scroll bar
+    (tool-bar-mode -1)                   ; disable tool bar
+    (show-paren-mode 1)                  ; enable paren mode
+    (global-hl-line-mode 1)              ; enable hl mode
+    (column-number-mode)                 ; view column location
+    (fset 'yes-or-no-p 'y-or-n-p)        ; simplify yes/no prompts
+    (global-auto-revert-mode t)          ; auto update buffer
+    (setq-default indent-tabs-mode nil)  ; convert tabs to spaces
+    (setq ring-bell-function 'ignore)    ; disable bell indicators
+
+  #+end_src
+* MacOS Settings
+  #+begin_src emacs-lisp
+    (cond ((eq system-type 'darwin)
+           ;; MacOS
+           ;; set font
+           (set-face-attribute 'default nil :font "Inconsolata" :height 135)
+           ;; merge OS titlebar with Emacs
+           (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
+           ))
+  #+end_src
+* Files
+  #+begin_src emacs-lisp
+    (setq tramp-default-method "ssh")         ; set ssh method for tramp
+    (setq custom-file "~/.emacs.d/custom.el") ; set custom file
+    (load custom-file nil t)                  ; load custom file
+    (setq make-backup-files nil)              ; disable backup files
+    (setq create-lockfiles nil)               ; disable lockfiles
+    (setq version-control t)                  ; enable version control
+    (setq auto-save-file-name-transforms      ; autosave in tmp directory
+          `((".*" ,temporary-file-directory t)))
+    (setq c-default-style "stroustrup")       ; set c style
   #+end_src
 * Use Package
   #+begin_src emacs-lisp
@@ -53,7 +64,7 @@
   #+end_src
 * Diminish
   #+begin_src emacs-lisp
-    ;(use-package diminish) ; hide minor modes
+                                            ;(use-package diminish) ; hide minor modes
   #+end_src
 * Keybindings
   #+begin_src emacs-lisp
@@ -63,27 +74,28 @@
     (global-set-key (kbd "C-c mp") '(lambda () (interactive)
                                       (find-file "/ssh:fc6631@queeg.cs.rit.edu:/home/stu11/s2/fc6631/Courses/CS243/.")))
     (global-set-key (kbd "C-c fi") '(lambda () (interactive)
-                                       (find-file "~/.emacs.d/init.org")))
+                                      (find-file "~/.emacs.d/init.org")))
     (global-set-key (kbd "C-c ft") '(lambda () (interactive)
-                                       (find-file "~/.emacs.d/noired-theme.org")))
+                                      (find-file "~/.emacs.d/noired-theme.org")))
     (global-set-key (kbd "C-c sa") '(lambda () (interactive)
-                                       (find-file "~/Library/Mobile Documents/iCloud~com~appsonthemove~beorg/Documents/org/life.txt")))
+                                      (find-file "~/Library/Mobile Documents/iCloud~com~appsonthemove~beorg/Documents/org/life.txt")))
     (global-set-key (kbd "C-c sr") '(lambda () (interactive)
-                                       (find-file "~/Library/Mobile Documents/iCloud~com~appsonthemove~beorg/Documents/org/rit.txt")))
+                                      (find-file "~/Library/Mobile Documents/iCloud~com~appsonthemove~beorg/Documents/org/rit.txt")))
     (global-set-key (kbd "C-c ss") '(lambda () (interactive)
-                                       (find-file "~/Library/Mobile Documents/iCloud~com~appsonthemove~beorg/Documents/org/wint95.txt")))
+                                      (find-file "~/Library/Mobile Documents/iCloud~com~appsonthemove~beorg/Documents/org/wint95.txt")))
     (global-set-key (kbd "C-c sp") '(lambda () (interactive)
-                                       (find-file "~/Library/Mobile Documents/iCloud~com~appsonthemove~beorg/Documents/org/math251.txt")))
+                                      (find-file "~/Library/Mobile Documents/iCloud~com~appsonthemove~beorg/Documents/org/math251.txt")))
     (global-set-key (kbd "C-c sm") '(lambda () (interactive)
-                                       (find-file "~/Library/Mobile Documents/iCloud~com~appsonthemove~beorg/Documents/org/csci243.txt")))
+                                      (find-file "~/Library/Mobile Documents/iCloud~com~appsonthemove~beorg/Documents/org/csci243.txt")))
     (global-set-key (kbd "C-c sc") '(lambda () (interactive)
-                                       (find-file "~/Library/Mobile Documents/iCloud~com~appsonthemove~beorg/Documents/org/csci262.txt")))
+                                      (find-file "~/Library/Mobile Documents/iCloud~com~appsonthemove~beorg/Documents/org/csci262.txt")))
     (global-set-key (kbd "C-c se") '(lambda () (interactive)
-                                       (find-file "~/Library/Mobile Documents/iCloud~com~appsonthemove~beorg/Documents/org/swen261.txt")))
+                                      (find-file "~/Library/Mobile Documents/iCloud~com~appsonthemove~beorg/Documents/org/swen261.txt")))
   #+end_src
 * Autothemer
   #+begin_src emacs-lisp
     (use-package autothemer) ; easier theming
+    (load-theme 'noired t)   ; load theme
   #+end_src
 * Helpful
   #+begin_src emacs-lisp
@@ -189,13 +201,13 @@
          (plantuml   . t))))                ; load plantuml
   #+end_src
 * Org Roam
-   #+begin_src emacs-lisp
-     (use-package org-roam                        ; connect notes
-       :diminish                                  ; hide OrgRoam mode
-       :bind (("C-c rf" . org-roam-find-file)
-              ("C-c ri" . org-roam-insert))
-       :hook (after-init . org-roam-mode)         ; start after init
-       :custom
-       (org-roam-directory "~/Documents/neuron/") ; set directory
-       (org-roam-file-extensions '("txt")))       ; use txt files
-   #+end_src
+  #+begin_src emacs-lisp
+    (use-package org-roam                        ; connect notes
+      :diminish                                  ; hide OrgRoam mode
+      :bind (("C-c rf" . org-roam-find-file)
+             ("C-c ri" . org-roam-insert))
+      :hook (after-init . org-roam-mode)         ; start after init
+      :custom
+      (org-roam-directory "~/Documents/neuron/") ; set directory
+      (org-roam-file-extensions '("txt")))       ; use txt files
+  #+end_src
