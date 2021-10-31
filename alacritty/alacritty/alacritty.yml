@@ -1,0 +1,53 @@
+# Personal Alacritty Configuration
+# Author: Francisco Cornejo-Garcia (@franciscornejog)
+
+window:
+  padding:
+    x: 1
+    y: 1
+  decorations: none
+
+font:
+  normal:
+    family: JetBrains Mono
+    style: Regular
+  bold:
+    family: JetBrains Mono
+    style: Bold
+  italic:
+    family: JetBrains Mono
+    style: italic
+  size: 12
+
+live_config_reload: true
+
+colors:
+  primary:
+    background: '#000000'
+    foreground: '#b9b9b9'
+
+  cursor:
+    text: '#101010'
+    cursor: '#b9b9b9'
+
+  normal:
+    black:   '#101010'
+    red:     '#FF1919'
+    green:   '#18A873'
+    yellow:  '#FFCE19'
+    blue:    '#0000FF'
+    magenta: '#FF0DF1'
+    cyan:    '#1BFFFC'
+    white:   '#cccccc'
+
+  bright:
+    black:   '#000000'
+    red:     '#ff0000'
+    green:   '#00ff00'
+    yellow:  '#ffff00'
+    blue:    '#0000ff'
+    magenta: '#ff00ff'
+    cyan:    '#00ffff'
+    white:   '#ffffff'
+
+draw_bold_text_with_bright_colors: true

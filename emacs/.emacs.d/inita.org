@@ -1,0 +1,29 @@
+* Keybindings
+  #+begin_src emacs-lisp
+    (global-set-key (kbd "C-c fR") 'rename-file)
+    (global-set-key (kbd "C-c lf") 'load-file)
+    (global-set-key (kbd "C-c mp") '(lambda () (interactive)
+                                      (find-file "/ssh:fc6631@queeg.cs.rit.edu:/home/stu11/s2/fc6631/Courses/CS243/.")))
+    (global-set-key (kbd "C-c ft") '(lambda () (interactive)
+                                      (find-file "~/.emacs.d/noired-theme.org")))
+    (global-set-key (kbd "C-c sr") '(lambda () (interactive)
+                                      (find-file "~/Documents/rit/rit.txt")))
+  #+end_src
+* Helpful
+  #+begin_src emacs-lisp
+    (use-package helpful   ; better help context
+      :commands (helpful-variable helpful-callable
+                                  helpful-function helpful-command)
+      :custom
+      (counsel-describe-function-function #'helpful-callable)
+      (counsel-describe-variable-function #'helpful-variable)
+      :bind
+      ([remap describe-function] . counsel-describe-function)
+      ([remap describe-command] . helpful-command)
+      ([remap describe-variable] . counsel-describe-variable)
+      ([remap describe-key] . helpful-key))
+  #+end_src
+* Rainbow
+  #+begin_src emacs-lisp
+    (use-package rainbow-mode :commands (rainbow-mode)) ; add colors
+  #+end_src

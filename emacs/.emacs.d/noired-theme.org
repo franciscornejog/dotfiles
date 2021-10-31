@@ -4,17 +4,13 @@
 
 * Setup
   #+begin_src emacs-lisp
-
     (require 'autothemer)
     (autothemer-deftheme
      noired "A minimalistic monochrome dark theme with red highlights"
      ((((class color) (min-colors #xFFFFFF)))
-
   #+end_src
-
 * Colors
   #+begin_src emacs-lisp
-
     (noired-black     "#000000")
     (noired-rd-gray   "#0a0a0a")
     (noired-bg-gray   "#121212")
@@ -27,12 +23,9 @@
     (noired-red       "#ff0000")
     (noired-yellow    "#ffff00")
     (noired-green     "#00ff00"))
-
   #+end_src
-  
 * Standard
   #+begin_src emacs-lisp
-
     ((default             (:background noired-black   :foreground noired-gray))
      (shadow              (:foreground noired-dk-gray))
      (success             (:foreground noired-green   :weight 'bold))
@@ -41,12 +34,9 @@
      (link                (:foreground noired-lt-gray :underline t))
      (region              (:background noired-red))
      (secondary-selection (:background noired-rd-gray))
-
   #+end_src
-
 * Font Lock
   #+begin_src emacs-lisp
-
     (font-lock-builtin-face       (:foreground noired-white))
     (font-lock-keyword-face       (:foreground noired-white))
     (font-lock-type-face          (:foreground noired-white))
@@ -55,18 +45,13 @@
     (font-lock-function-name-face (:foreground noired-gray))
     (font-lock-variable-name-face (:foreground noired-gray))
     (font-lock-comment-face       (:foreground noired-dk-gray))
-
   #+end_src
-
 * Highlight
   #+begin_src emacs-lisp
-
     (highlight      (:background noired-bg-gray))
     (lazy-highlight (:background noired-lt-gray :foreground noired-black))
     (match          (:background noired-dk-gray))
-
   #+end_src
-
 * Frame
   #+begin_src emacs-lisp
 
@@ -135,13 +120,13 @@
      (org-sexp-date               (:foreground noired-red))
      (org-tag                     (:foreground noired-dk-gray :weight 'bold))
      (org-todo                    (:foreground noired-red     :weight 'bold))
-     (org-done                    (:foreground noired-green   :weight 'bold))
-     (org-agenda-done             (:foreground noired-green))
+     (org-done                    (:foreground noired-white   :weight 'bold))
+     (org-agenda-done             (:foreground noired-white))
      (org-headline-done           (:foreground noired-gray))
      (org-table                   (:foreground noired-gray))
      (org-formula                 (:foreground noired-red))
-     (org-document-title          (:foreground noired-red))
-     (org-document-info           (:foreground noired-red))
+     (org-document-title          (:foreground noired-white))
+     (org-document-info           (:foreground noired-white))
      (org-block                   (:extend t :background noired-rd-gray))
      (org-clock-overlay           (:foreground noired-white))
      (org-agenda-structure        (:foreground noired-lt-gray))

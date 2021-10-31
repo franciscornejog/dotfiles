@@ -1,12 +1,10 @@
 " Personal Vim Configuration
-"
-" Maintainer:  Francisco Cornejo-Garcia
-" Last change: 2020 Dec 19
-"
+" Author:  Francisco Cornejo-Garcia
+
 " Default ----------------------------------------------------------------------
 set nocompatible               " Enable vim settings
-filetype indent plugin on      " Enable filetype detection and plugins
 syntax enable                  " Enable syntax highlighting
+filetype plugin indent on      " Enable filetype detection and plugins
 
 " Editor -----------------------------------------------------------------------
 set cursorline                 " Highlight cursor line
@@ -16,16 +14,16 @@ set number                     " Show line numbers
 set ruler                      " Show cursor position
 set wildmenu                   " Show completion matches in status line
 set fillchars=vert:\ ,fold:-   " Simplify vertical split
+set showcmd                    " Show command when typed
 
 " Search -----------------------------------------------------------------------
 set hlsearch                   " Highlight matches
-set ignorecase                 " Ignore cases
 set incsearch                  " Show partial matches 
 set smartcase                  " Enable smart search
 
 " Text -------------------------------------------------------------------------
 set linebreak                  " Wrap lines
-set textwidth=80               " Set line width to 80 chars
+set textwidth=80               " Set line width
 
 " Whitespace -------------------------------------------------------------------
 set autoindent                 " Autoindent
@@ -40,3 +38,27 @@ set backspace=indent,eol,start " Enable backspace in Insert Mode
 
 " Colorscheme ------------------------------------------------------------------
 colorscheme noired           " Set specified colorscheme 
+
+" Java -------------------------------------------------------------------------
+augroup Java 
+    autocmd!
+    autocmd FileType java inoremap <buffer> { {<CR>}<C-c>O
+augroup END
+
+" Save folding
+" autocmd BufWinLeave *.* mkview
+" autocmd BufWinEnter *.* silent loadview
+
+" Plugins ----------------------------------------------------------------------
+
+" Automatically install vim-plug
+let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+call plug#begin(data_dir . '/plugins')
+Plug 'chrisbra/Colorizer'
+call plug#end()
+

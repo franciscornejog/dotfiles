@@ -1,5 +1,7 @@
 [user]
     name = Francisco Cornejo-Garcia
-    email = franciscornejo.garcia@gmail.com
+    email = franciscornejog@gmail.com
 [github]
-    user = franciscornejogarcia
+    user = franciscornejog
+[core]
+	excludesfile = /Users/fjcg/Documents/dotfiles/git/.gitignore
