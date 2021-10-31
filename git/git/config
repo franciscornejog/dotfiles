@@ -3,5 +3,3 @@
     email = franciscornejog@gmail.com
 [github]
     user = franciscornejog
-[core]
-	excludesfile = /Users/fjcg/Documents/dotfiles/git/.gitignore
