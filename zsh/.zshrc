@@ -21,3 +21,8 @@ alias l='ls -al'
 
 alias ca='vi ~/.config/alacritty/alacritty.yml'
 alias cz='vi ~/.zshrc'
+
+alias ga='git add'
+alias gc='git commit -m'
+alias gp='git push'
+alias gs='git status'
