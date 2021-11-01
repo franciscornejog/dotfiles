@@ -8,6 +8,12 @@
     user = franciscornejog
 [alias]
     globalconfig = config --list --show-origin
+	co = checkout
+	br = branch
+	ci = commit
+	st = status
+	unstage = restore --staged
+	last = log -1
 [core]
 	editor = nvim
 [init]
