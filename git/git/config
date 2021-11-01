@@ -1,5 +1,14 @@
+# Personal Git Configuration
+# Author: Francisco Cornejo-Garcia (franciscornejog)
+
 [user]
     name = Francisco Cornejo-Garcia
     email = franciscornejog@gmail.com
 [github]
     user = franciscornejog
+[alias]
+    globalconfig = config --list --show-origin
+[core]
+	editor = nvim
+[init]
+	defaultBranch = main
