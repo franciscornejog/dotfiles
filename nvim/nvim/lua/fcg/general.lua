@@ -22,6 +22,5 @@ set.colorcolumn = '80'                     -- Highlight column line
 set.cursorcolumn = true                    -- Highlight cursor column
 set.cursorline = true                      -- Highlight cursor line
 set.signcolumn = 'yes'                     -- Show more info beside text
-set.spell = true                           -- Spellcheck
 set.wrap = false                           -- Do not wrap
 
