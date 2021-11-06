@@ -1,6 +1,12 @@
 # Personal Dotfiles Configuration
 Author: Francisco Cornejo-Garcia (franciscornejog)
 
+## Neovim Resources
+https://github.com/jessarcher/dotfiles/tree/master/nvim
+https://github.com/wbthomason/packer.nvim
+https://oroques.dev/notes/neovim-init/
+https://icyphox.sh/blog/nvim-lua/
+
 ## Zsh Resources
 https://salferrarello.com/zsh-git-status-prompt/
 https://zsh.sourceforge.io/Doc/Release/User-Contributions.html#Version-Control-Information
