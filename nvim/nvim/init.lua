@@ -1,7 +1,7 @@
 -- Personal Neovim Configuration
 -- Author:  Francisco Cornejo-Garcia
 
-require 'general'
-require 'terminal'
-require 'maps'
+require 'fcg.general'
+require 'fcg.terminal'
+require 'fcg.maps'
 require 'plugins'

@@ -5,8 +5,8 @@ if fn.empty(fn.glob(installPath)) > 0 then
 end
 
 return require('packer').startup({{ 
-    'wbthomason/packer.nvim',
-    require 'colorizer',
-    require 'telescope'
+    require 'plug.packer',
+    require 'plug.colorizer',
+    require 'plug.telescope'
 }})
 

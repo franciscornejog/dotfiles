@@ -6,6 +6,7 @@ https://github.com/jessarcher/dotfiles/tree/master/nvim
 https://github.com/wbthomason/packer.nvim
 https://oroques.dev/notes/neovim-init/
 https://icyphox.sh/blog/nvim-lua/
+https://vonheikemen.github.io/devlog/tools/configuring-neovim-using-lua/
 
 ## Zsh Resources
 https://salferrarello.com/zsh-git-status-prompt/
