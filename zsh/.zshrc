@@ -19,6 +19,7 @@ alias src="source"
 alias vi='nvim'
 alias l='ls -al'
 
+alias gv='cd ~/.config/nvim'
 alias ca='vi ~/.config/alacritty/alacritty.yml'
 alias cg='vi ~/.config/git/config'
 alias cz='vi ~/.zshrc'
