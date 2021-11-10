@@ -51,3 +51,7 @@ colors:
     white:   '#ffffff'
 
 draw_bold_text_with_bright_colors: true
+
+keybindings:
+  - { key: Plus, mods: Command, action: IncreaseFontSize }
+  - { key: Minus, mods: Command, action: DecreaseFontSize }
