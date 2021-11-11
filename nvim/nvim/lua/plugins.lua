@@ -6,10 +6,10 @@ end
 
 return require('packer').startup({{ 
     require 'plug.packer',
+    require 'plug.noired',
     require 'plug.plenary',
     require 'plug.treesitter',
     require 'plug.telescope',
     require 'plug.fugitive',
-    require 'plug.colorizer',
 }})
 
