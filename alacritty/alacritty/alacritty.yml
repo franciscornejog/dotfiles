@@ -16,7 +16,7 @@ font:
     style: Bold
   italic:
     family: JetBrains Mono
-    style: italic
+    style: Italic
   size: 12
 
 live_config_reload: true
@@ -32,7 +32,7 @@ colors:
 
   normal:
     black:   '#101010'
-    red:     '#FF1919'
+    red:     '#E04128'
     green:   '#18A873'
     yellow:  '#FFCE19'
     blue:    '#0000FF'
