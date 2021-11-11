@@ -15,7 +15,7 @@ zstyle ':vcs_info:git:*' actionformats '%F{white}.%b|%a%u%c%f' # for git action
 PROMPT='%B%1~%b$vcs_info_msg_0_%(!.#.%(?.:.%F{red}:)%f '
 
 # Zsh Plugins ------------------------------------------------------------------
-source ~/.local/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+# source ~/.local/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 
 # Aliases ----------------------------------------------------------------------
 alias src="source"
@@ -24,6 +24,7 @@ alias l='ls -al'
 
 alias dv='cd ~/.config/nvim'
 
+alias ct='vi ~/.local/share/nvim/site/pack/packer/start/noired.nvim/lua/noired.lua'
 alias ca='vi ~/.config/alacritty/alacritty.yml'
 alias cg='vi ~/.config/git/config'
 alias cz='vi ~/.zshrc'
