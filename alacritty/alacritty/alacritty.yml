@@ -24,33 +24,23 @@ live_config_reload: true
 colors:
   primary:
     background: '#000000'
-    foreground: '#b9b9b9'
+    foreground: '#BCBCBC'
 
   cursor:
-    text: '#101010'
-    cursor: '#b9b9b9'
+    text: '#000000'
+    cursor: '#BCBCBC'
 
   normal:
-    black:   '#101010'
+    black:   '#000000'
     red:     '#E04128'
     green:   '#18A873'
     yellow:  '#FFCE19'
-    blue:    '#0000FF'
+    blue:    '#28C7E0'
     magenta: '#FF0DF1'
     cyan:    '#1BFFFC'
-    white:   '#cccccc'
+    white:   '#EEEEEE'
 
-  bright:
-    black:   '#000000'
-    red:     '#ff0000'
-    green:   '#00ff00'
-    yellow:  '#ffff00'
-    blue:    '#0000ff'
-    magenta: '#ff00ff'
-    cyan:    '#00ffff'
-    white:   '#ffffff'
-
-draw_bold_text_with_bright_colors: true
+draw_bold_text_with_bright_colors: false
 
 keybindings:
   - { key: Plus, mods: Command, action: IncreaseFontSize }
