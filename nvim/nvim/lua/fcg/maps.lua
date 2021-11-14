@@ -6,6 +6,7 @@ m.map('n', ' ve', ':edit ~/.config/nvim/init.lua<cr>')
 m.map('n', 'n', 'nzzzv')
 m.map('n', 'N', 'Nzzzv')
 m.map('n', 'J', 'mjJ`j')
+m.map('n', ' vc', ':set nocursorcolumn|set nocursorline<cr>')
 
 m.map('t', '<C-w>N', '<C-\\><C-N>')
 m.map('t', '<C-w>h', '<C-\\><C-N><C-w>h')

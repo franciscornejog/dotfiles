@@ -8,8 +8,11 @@ return require('packer').startup({{
     require 'plug.packer',
     require 'plug.noired',
     require 'plug.plenary',
-    require 'plug.treesitter',
     require 'plug.telescope',
+    require 'plug.treesitter',
+    require 'plug.playground',
+    require 'plug.colorizer',
+    require 'plug.gitsigns',
     require 'plug.fugitive',
 }})
 
