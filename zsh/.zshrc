@@ -33,3 +33,5 @@ alias ga='git add'
 alias gc='git commit -m'
 alias gp='git push'
 alias gs='git status'
+
+alias luamake=/Users/fjcg/repositories/lua-language-server/3rd/luamake/luamake

@@ -8,6 +8,7 @@ return require('packer').startup({{
     require 'plug.packer',
     require 'plug.noired',
     require 'plug.plenary',
+    require 'plug.lspconfig',
     require 'plug.telescope',
     require 'plug.treesitter',
     require 'plug.playground',
