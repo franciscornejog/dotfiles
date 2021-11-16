@@ -4,7 +4,7 @@ if fn.empty(fn.glob(installPath)) > 0 then
   fn.system({'git', 'clone', '--depth=1', 'https://github.com/wbthomason/packer.nvim', installPath})
 end
 
-return require('packer').startup({{ 
+return require('packer').startup({{
     require 'plug.packer',
     require 'plug.noired',
     require 'plug.plenary',
