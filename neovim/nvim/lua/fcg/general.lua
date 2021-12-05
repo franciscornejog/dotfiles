@@ -1,6 +1,6 @@
 local set = vim.opt
 
-vim.cmd 'colorscheme noired'               -- Set specified colorscheme 
+vim.cmd('colorscheme noired')              -- Set specified colorscheme
 set.expandtab = true                       -- Turn tab to spaces
 set.shiftwidth = 4                         -- Indent with specific white space
 set.smartindent = true                     -- Smart auto indenting

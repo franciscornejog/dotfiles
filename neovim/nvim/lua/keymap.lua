@@ -7,6 +7,6 @@ end
 
 keymap.n = function(lhs, rhs)
     keymap.map('n', lhs, rhs)
-end 
+end
 
 return keymap

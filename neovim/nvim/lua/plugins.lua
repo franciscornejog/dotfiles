@@ -8,7 +8,16 @@ return require('packer').startup({{
     require 'plug.packer',
     require 'plug.noired',
     require 'plug.plenary',
+    require 'plug.jdtls',
+    require 'plug.lspkind',
     require 'plug.lspconfig',
+    require 'plug.luasnip',
+    require 'plug.cmp-luasnip',
+    require 'plug.cmp-buffer',
+    require 'plug.cmp-path',
+    require 'plug.cmp-lua',
+    require 'plug.cmp-lsp',
+    require 'plug.cmp',
     require 'plug.telescope',
     require 'plug.treesitter',
     require 'plug.playground',
@@ -16,4 +25,3 @@ return require('packer').startup({{
     require 'plug.gitsigns',
     require 'plug.fugitive',
 }})
-
