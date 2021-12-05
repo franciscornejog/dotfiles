@@ -1,6 +1,9 @@
 # Personal Zsh Configuration
 # Author: Francisco Cornejo-Garcia (@franciscornejog)
 
+# Environment Variables --------------------------------------------------------
+export JAVA_HOME='/Users/fjcg/Library/Java/JavaVirtualMachines/openjdk-17/Contents/Home'
+
 # Prompt -----------------------------------------------------------------------
 autoload -Uz vcs_info                            # autoload vcs_info
 precmd() { vcs_info }                            # show vcs_info as function
