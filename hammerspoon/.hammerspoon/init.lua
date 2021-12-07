@@ -141,6 +141,25 @@ hs.hotkey.bind(modifier, 'I', function()
 end)
 
 -- Menu ------------------------------------------------------------------------
+-- local menuModalKey = hs.hotkey.modal.new(modifier, 'O', 'MenuMode')
+-- menuModalKey:bind(modifier, 'O', 'Quit MenuMode', function() menuModalKey:exit() end)
+local chooser = hs.chooser.new(function(choice)
+    if (choice['text'] == 'Sleep') then
+        hs.caffeinate.systemSleep()
+    end
+end)
+chooser:choices({
+    {
+        text = 'Sleep'
+    },
+})
+hs.hotkey.bind({ 'ctrl' }, 'space', function()
+    chooser:show()
+end)
+
+
+
+
 -- Reload Configuration --------------------------------------------------------
 local function reloadConfig(files)
     local doReload = false
