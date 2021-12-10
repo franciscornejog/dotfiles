@@ -1,6 +1,9 @@
 # Personal Dotfiles Configuration
 # Author:  Francisco Cornejo-Garcia
 
+# Create config directory
+mkdir -p $HOME/.config
+
 # Home -------------------------------------------------------------------------
 home=(
     hammerspoon
