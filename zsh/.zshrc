@@ -38,3 +38,13 @@ alias gp='git push'
 alias gs='git status'
 
 alias luamake=/Users/fjcg/repositories/lua-language-server/3rd/luamake/luamake
+
+# Set up fzf
+# /usr/local/opt/fzf/install
+
+export FZF_DEFAULT_COMMAND="fd . $HOME"
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_ALT_C_COMMAND="fd -t d . $HOME"
+# fix FZF ALT C COMMAND
+bindkey "ç" fzf-cd-widget
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
