@@ -9,6 +9,7 @@ read -sp $'Go to Dock & Menu Bar to hide them\n'
 read -sp $'Go to Users & Groups to change profile picture\n'
 read -sp $'Go to iCloud to sync and set up Documents\n'
 read -sp $'Go to Notifications to turn them all off\n'
+read -sp $'Go to Sound to change output and turn off sound effects\n'
 read -sp $'Go back to Terminal\n'
 
 # Software Installation --------------------------------------------------------
@@ -28,10 +29,13 @@ packages=(
     alacritty
     brave-browser
     discord
+    exa
     git
     hammerspoon
+    lua-language-server
     neovim
     slack
+    stow
     syncthing
     tmux
     zoom
@@ -44,7 +48,14 @@ for package in ${packages[@]}; do
     brew install $package
 done
 
+# Install font
+brew tap homebrew/cask-fonts
+brew install --cask font-jetbrains-mono
+
 echo 'Starting syncthing...'
 brew services start syncthing
 
 read -sp $'Install Wally\n'
+
+echo 'Set up dotfiles'
+# dotfiles in setup.sh

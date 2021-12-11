@@ -8,7 +8,7 @@ return require('packer').startup({{
     require 'plug.packer',
     require 'plug.noired',
     require 'plug.plenary',
-    require 'plug.jdtls',
+    -- require 'plug.jdtls',
     require 'plug.lspkind',
     require 'plug.lspconfig',
     require 'plug.luasnip',

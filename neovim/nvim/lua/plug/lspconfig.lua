@@ -13,7 +13,7 @@ return {
         m.n(' vds', ':lua vim.lsp.diagnostic.show_line_diagnostics()<CR>')
         m.n(' vdn', ':lua vim.lsp.diagnostic.goto_next()<CR>')
         m.n(' vdp', ':lua vim.lsp.diagnostic.goto_prev()<CR>')
-        local installation_path = '/Users/fjcg/repositories/lua-language-server'
+        local installation_path = '/usr/local/Cellar/lua-language-server/2.5.3/libexec'
         local binary = installation_path .. '/bin/macOS/lua-language-server'
         local capabilities = vim.lsp.protocol.make_client_capabilities()
         capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
