@@ -45,3 +45,4 @@ draw_bold_text_with_bright_colors: false
 keybindings:
   - { key: Plus, mods: Command, action: IncreaseFontSize }
   - { key: Minus, mods: Command, action: DecreaseFontSize }
+  - { key: C, mods: Alt, chars: "\x1bc" }
