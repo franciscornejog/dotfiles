@@ -5,34 +5,6 @@ hs.hotkey.bind(modifier, 'S', function()
     hs.notify.new({title='Hammer', informativeText = 'Hello!'}):send()
 end)
 
--- App Launcher ----------------------------------------------------------------
-local function bindHotkey(mapping)
-    for key, app in pairs(mapping) do
-        hs.hotkey.bind(modifier, key, function()
-            hs.application.launchOrFocus(app)
-        end)
-    end
-end
-
-local appHotkeys = {
-    A = 'Mail',
-    B = 'Safari',
-    C = 'Amazon Music',
-    D = 'Discord',
-    E = 'Hammerspoon',
-    F = 'FaceTime',
-    G = 'Finder',
-    Q = 'Books',
-    R = 'System Preferences',
-    S = 'Slack',
-    T = 'Alacritty',
-    V = 'Brave Browser',
-    W = 'Wally',
-    X = 'Preview',
-    Z = 'Zoom',
-}
-bindHotkey(appHotkeys)
-
 -- Window Management -----------------------------------------------------------
 hs.window.animationDuration = 0
 local function moveFocusedWindow(newWindow)
