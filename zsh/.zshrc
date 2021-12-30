@@ -23,7 +23,9 @@ PROMPT='%B%1~%b$vcs_info_msg_0_%(!.#.%(?.:.%F{red}:)%f '
 # Aliases ----------------------------------------------------------------------
 alias src="source"
 alias vi='nvim'
-alias l='ls -al'
+alias l='exa -al'
+alias ..='cd ..'
+alias ...='cd ../..'
 
 alias dv='cd ~/.config/nvim'
 
@@ -34,6 +36,8 @@ alias cz='vi ~/.zshrc'
 
 alias ga='git add'
 alias gc='git commit -m'
+alias gd='git diff'
+alias gl='git log'
 alias gp='git push'
 alias gs='git status'
 
