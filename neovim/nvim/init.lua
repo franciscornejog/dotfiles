@@ -1,7 +1,6 @@
 -- Personal Neovim Configuration
 -- Author:  Francisco Cornejo-Garcia
 
-require 'fcg.maps'
 require 'plugins'
 
 vim.cmd('colorscheme noired')                  -- Set specified colorscheme
