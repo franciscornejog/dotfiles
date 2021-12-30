@@ -33,8 +33,12 @@ packages=(
     git
     hammerspoon
     lua-language-server
+    luajit
+    luarocks
     neovim
+    ripgrep
     slack
+    sqlite
     stow
     syncthing
     tmux
@@ -52,6 +56,13 @@ done
 brew tap homebrew/cask-fonts
 brew install --cask font-jetbrains-mono
 
+# Install luarocks packages
+luarocks install luasql-sqlite3 SQLITE_DIR=/usr/local/Cellar/sqlite/3.37.0/
+
+echo 'Installing Rust...'
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+rustup update
+
 echo 'Starting syncthing...'
 brew services start syncthing
 
@@ -59,3 +70,4 @@ read -sp $'Install Wally\n'
 
 echo 'Set up dotfiles'
 # dotfiles in setup.sh
+
