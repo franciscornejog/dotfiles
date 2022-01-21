@@ -1,1 +1,0 @@
-return 'franciscornejog/noired.nvim'
