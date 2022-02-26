@@ -24,12 +24,13 @@ PROMPT='%B%1~%b$vcs_info_msg_0_%(!.#.%(?.:.%F{red}:)%f '
 alias src="source"
 alias vi='nvim'
 alias l='exa -al'
+alias lt='exa --tree'
 alias ..='cd ..'
 alias ...='cd ../..'
 
 alias dv='cd ~/.config/nvim'
 
-alias ct='vi ~/.local/share/nvim/site/pack/packer/start/noired.nvim/lua/noired.lua'
+alias ct='vi ~/.local/share/nvim/site/pack/packer/start/noired.nvim/lua/noired'
 alias ca='vi ~/.config/alacritty/alacritty.yml'
 alias cg='vi ~/.config/git/config'
 alias cz='vi ~/.zshrc'
