@@ -3,10 +3,8 @@
 
 require('plugins')
 
-vim.cmd('colorscheme noired')                  -- Set specified colorscheme
 vim.opt.colorcolumn = '80'                     -- Highlight column line
-vim.opt.conceallevel = 2
-vim.opt.cursorcolumn = true                    -- Highlight cursor column
+vim.opt.conceallevel = 2                       -- Hide certain text
 vim.opt.cursorline = true                      -- Highlight cursor line
 vim.opt.expandtab = true                       -- Turn tab to spaces
 vim.opt.exrc = true                            -- Source project vim configurations
@@ -19,6 +17,7 @@ vim.opt.tabstop = 4                            -- Set tab width
 vim.opt.undofile = true                        -- Enable undo outside editor
 vim.opt.updatetime = 50                        -- Lower update time
 vim.opt.wrap = false                           -- Do not wrap
+vim.cmd('colorscheme noired')                  -- Set specified colorscheme
 
 -- Insert when open term
 -- Remove line number when open term
