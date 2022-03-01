@@ -12,6 +12,11 @@ read -sp $'Go to Notifications to turn them all off\n'
 read -sp $'Go to Sound to change output and turn off sound effects\n'
 read -sp $'Go back to Terminal\n'
 
+# Defaults Settings ------------------------------------------------------------
+echo 'Removing apps from the Dock...'
+defaults write com.apple.dock persistent-apps -array
+killall Dock
+
 # Software Installation --------------------------------------------------------
 echo 'Installing Xcode Command Line Tools...'
 # xcode-select --install
