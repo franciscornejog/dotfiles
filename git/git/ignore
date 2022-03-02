@@ -1,3 +1,5 @@
 .DS_Store
-public
+public/
 out/
+node_modules/
+.netlify
