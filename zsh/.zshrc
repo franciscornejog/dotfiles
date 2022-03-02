@@ -30,10 +30,11 @@ alias ...='cd ../..'
 
 alias dv='cd ~/.config/nvim'
 
-alias ct='vi ~/.local/share/nvim/site/pack/packer/start/noired.nvim/lua/noired'
-alias ca='vi ~/.config/alacritty/alacritty.yml'
-alias cg='vi ~/.config/git/config'
-alias cz='vi ~/.zshrc'
+alias sf='vi $(fzf)'
+alias sd='fd -t d . $HOME | fzf'
+alias sp='vi $(fd . ~/Documents/1_projects | fzf)'
+alias sa='vi $(fd . ~/Documents/2_areas | fzf)'
+alias sr='vi $(fd . ~/Documents/3_resources | fzf)'
 
 alias ga='git add'
 alias gc='git commit -m'
@@ -48,8 +49,4 @@ alias luamake=/Users/fjcg/repositories/lua-language-server/3rd/luamake/luamake
 # /usr/local/opt/fzf/install
 
 export FZF_DEFAULT_COMMAND="fd . $HOME"
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_ALT_C_COMMAND="fd -t d . $HOME"
-# fix FZF ALT C COMMAND
-bindkey "ç" fzf-cd-widget
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
