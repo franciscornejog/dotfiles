@@ -121,10 +121,10 @@ return require('packer').startup(function(use)
         config = function()
             require('Comment').setup()
         end }
-    use { '~/Documents/projects/test-plugin',
-        config = function()
-            require('test-plugin').setup()
-            vim.keymap.set('n', ' rt', ":lua require('test-plugin').test()<cr>")
-        end }
+    -- use { '~/Documents/1_projects/test-plugin',
+    --     config = function()
+    --         require('test-plugin').setup()
+    --         vim.keymap.set('n', ' rt', ":lua require('test-plugin').test()<cr>")
+    --     end }
     -- use 'mfussenegger/nvim-jdtls'
 end)
