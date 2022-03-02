@@ -37,8 +37,7 @@ vim.keymap.set('n', 'n', 'nzzzv')
 vim.keymap.set('n', 'N', 'Nzzzv')
 vim.keymap.set('n', 'J', 'mjJ`j')
 
-vim.keymap.set('n', ' ve', ':edit ~/.config/nvim/init.lua<cr>')
-vim.keymap.set('n', ' vc', ':set nocursorcolumn|set nocursorline<cr>')
+vim.keymap.set('n', ' gv', ':edit ~/.config/nvim/init.lua<cr>')
 
 vim.keymap.set('t', '<C-w>N', '<C-\\><C-N>')
 vim.keymap.set('t', '<C-w>h', '<C-\\><C-N><C-w>h')
