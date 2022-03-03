@@ -1,5 +1,5 @@
 -- Personal Neovim Configuration
--- Author:  Francisco Cornejo-Garcia
+-- Author:  Francisco Cornejo-Garcia (franciscornejog)
 
 require('plugins')
 
@@ -17,6 +17,8 @@ vim.opt.tabstop = 4                            -- Set tab width
 vim.opt.undofile = true                        -- Enable undo outside editor
 vim.opt.updatetime = 50                        -- Lower update time
 vim.opt.wrap = false                           -- Do not wrap
+vim.wo.foldmethod = 'expr'
+vim.wo.foldexpr = 'nvim_treesitter#foldexpr()'
 vim.cmd('colorscheme noired')                  -- Set specified colorscheme
 
 -- Insert when open term
