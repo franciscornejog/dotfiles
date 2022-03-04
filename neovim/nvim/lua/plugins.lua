@@ -24,7 +24,7 @@ return require('packer').startup({{
     end },
     { 'nvim-treesitter/nvim-treesitter', config = function()
         require('nvim-treesitter.configs').setup({
-            ensure_installed = { 'lua', 'rust', 'markdown' },
+            ensure_installed = { 'lua', 'rust', 'markdown', 'html', 'css', 'javascript', 'typescript', 'vim', 'svelte', 'json', 'toml', 'yaml', 'vim' },
             highlight = { enable = true },
             playground = { enable = true },
         })
@@ -98,8 +98,8 @@ return require('packer').startup({{
                 vim.keymap.set('n', ' ri', ':TSLspImportAll<cr>', { silent = true, buffer = bufnr })
             end,
         })
+        require('lspconfig').svelte.setup({})
         require('lspconfig').sumneko_lua.setup({
-            on_attach = on_attach,
             cmd = { binary, '-E', installation_path .. '/main.lua' },
             settings = {
                 Lua = {
