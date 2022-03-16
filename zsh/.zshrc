@@ -2,7 +2,10 @@
 # Author: Francisco Cornejo-Garcia (@franciscornejog)
 
 # Environment Variables --------------------------------------------------------
+export PATH=/usr/local/bin:$PATH
+export PATH=$PATH:./node_modules/.bin
 export JAVA_HOME='/Users/fjcg/Library/Java/JavaVirtualMachines/openjdk-17/Contents/Home'
+eval "$(homebrew/bin/brew shellenv)"
 
 # Prompt -----------------------------------------------------------------------
 autoload -Uz vcs_info                            # autoload vcs_info
