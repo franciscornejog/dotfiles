@@ -1,10 +1,5 @@
 local modifier = { 'alt' }
 
--- Notifications ---------------------------------------------------------------
-hs.hotkey.bind(modifier, 'S', function()
-    hs.notify.new({title='Hammer', informativeText = 'Hello!'}):send()
-end)
-
 -- Window Management -----------------------------------------------------------
 hs.window.animationDuration = 0
 local function moveFocusedWindow(newWindow)
@@ -111,6 +106,16 @@ hs.hotkey.bind(modifier, 'I', function()
         h = screenFrame.h }
     moveFocusedWindow(newWindow)
 end)
+
+-- Application Hotkeys ---------------------------------------------------------
+local function open(hotkey, application)
+  hs.hotkey.bind(modifier, hotkey, function()
+    hs.application.launchOrFocus(application)
+  end)
+end
+
+open('A', 'Alacritty')
+open('S', 'Safari')
 
 -- Menu ------------------------------------------------------------------------
 -- local menuModalKey = hs.hotkey.modal.new(modifier, 'O', 'MenuMode')
