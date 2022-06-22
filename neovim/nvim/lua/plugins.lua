@@ -125,4 +125,7 @@ return require('packer').startup({{
     { 'numToStr/Comment.nvim', config = function()
         require('Comment').setup()
     end },
+    { 'mickael-menu/zk-nvim', config = function()
+      require('zk').setup()
+    end },
 }})
