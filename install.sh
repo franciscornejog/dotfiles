@@ -47,10 +47,10 @@ packages=(
     stow
     syncthing
     tmux
+    z
     zoom
     zsh
-    z
-    amazon-music
+    zsh-autosuggestions
 )
 
 for package in ${packages[@]}; do
