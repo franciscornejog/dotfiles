@@ -7,7 +7,7 @@
 [github]
     user = franciscornejog
 [alias]
-    globalconfig = config --list --show-origin
+  globalconfig = config --list --show-origin
 	co = checkout
 	br = branch
 	ci = commit
