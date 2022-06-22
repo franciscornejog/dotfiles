@@ -21,7 +21,7 @@ zstyle ':vcs_info:git:*' actionformats '%F{white} (%b|%a%u%c%f)' # for git actio
 PROMPT='%B%1~%b$vcs_info_msg_0_%(!.#.%(?.:.%F{red}:)%f '
 
 # Zsh Plugins ------------------------------------------------------------------
-# source ~/.local/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # Aliases ----------------------------------------------------------------------
 alias src="source"
@@ -31,13 +31,9 @@ alias lt='exa --tree'
 alias ..='cd ..'
 alias ...='cd ../..'
 
-alias dv='cd ~/.config/nvim'
-
+alias sv='cd ~/.config/nvim'
 alias sf='vi $(fzf)'
 alias sd='cd $(fd -t d . $HOME | fzf)'
-alias sp='vi $(fd -H . ~/Documents/1_projects | fzf)'
-alias sa='vi $(fd -H . ~/Documents/2_areas | fzf)'
-alias sr='vi $(fd -H . ~/Documents/3_resources | fzf)'
 
 alias ga='git add'
 alias gc='git commit -m'
@@ -53,3 +49,5 @@ alias luamake=/Users/fjcg/repositories/lua-language-server/3rd/luamake/luamake
 
 export FZF_DEFAULT_COMMAND="fd -H . $HOME"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+bindkey "ç" fzf-cd-widget
+export PATH="/usr/local/opt/ruby/bin:$PATH"
