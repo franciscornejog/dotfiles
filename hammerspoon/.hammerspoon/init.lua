@@ -116,6 +116,9 @@ end
 
 open('A', 'Alacritty')
 open('S', 'Safari')
+open('C', 'Google Chrome')
+open('V', 'Visual Studio Code')
+open('W', 'Slack')
 
 -- Menu ------------------------------------------------------------------------
 -- local menuModalKey = hs.hotkey.modal.new(modifier, 'O', 'MenuMode')
