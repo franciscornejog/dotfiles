@@ -5,6 +5,7 @@
 export PATH=/usr/local/bin:$PATH
 export PATH=$PATH:./node_modules/.bin
 export JAVA_HOME='/Users/fjcg/Library/Java/JavaVirtualMachines/openjdk-17/Contents/Home'
+export EDITOR='nvim'
 eval "$(homebrew/bin/brew shellenv)"
 
 # Prompt -----------------------------------------------------------------------
@@ -24,35 +25,28 @@ PROMPT='%B%1~%b$vcs_info_msg_0_%(!.#.%(?.:.%F{red}:)%f '
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # Aliases ----------------------------------------------------------------------
-alias src="source"
 alias vi='nvim'
 alias l='exa -al'
 alias lt='exa --tree'
 alias ..='cd ..'
 alias ...='cd ../..'
 
-alias sv='cd ~/.config/nvim'
-alias sf='vi $(fzf)'
-alias sd='cd $(fd -t d . $HOME | fzf)'
+alias fv='cd ~/.config/nvim'
+alias ff='vi $(fzf)'
+alias fd='cd $(fzf)'
 
 alias ga='git add'
 alias gc='git commit -m'
 alias gd='git diff'
 alias gl='git log'
 alias gp='git push'
+alias gP='git pull'
 alias gs='git status'
 
 alias luamake=/Users/fjcg/repositories/lua-language-server/3rd/luamake/luamake
 
-# Set up fzf
-# /usr/local/opt/fzf/install
-
-export FZF_DEFAULT_COMMAND="fd -H . $HOME"
+export FZF_DEFAULT_COMMAND="fd -H . $HOME/Documents/"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-bindkey "ç" fzf-cd-widget
-export PATH="/usr/local/opt/ruby/bin:$PATH"
-
 eval 
-SFDX_AC_ZSH_SETUP_PATH=/Users/franciscocornejogarcia/Library/Caches/sfdx/autocomplete/zsh_setup && test -f $SFDX_AC_ZSH_SETUP_PATH && source $SFDX_AC_ZSH_SETUP_PATH; # sfdx autocomplete setupeval 
 SFDX_AC_ZSH_SETUP_PATH=/Users/franciscocornejogarcia/Library/Caches/sfdx/autocomplete/zsh_setup && test -f $SFDX_AC_ZSH_SETUP_PATH && source $SFDX_AC_ZSH_SETUP_PATH; # sfdx autocomplete setup

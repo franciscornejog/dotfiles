@@ -1,10 +1,11 @@
 local fn = vim.fn
-local installPath = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
-if fn.empty(fn.glob(installPath)) > 0 then
-  fn.system({'git', 'clone', '--depth=1', 'https://github.com/wbthomason/packer.nvim', installPath})
+local url = 'https://github.com/wbthomason/packer.nvim'
+local path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
+if fn.empty(fn.glob(path)) > 0 then
+    fn.system({'git', 'clone', '--depth=1', url, path})
 end
 
-return require('packer').startup({{
+local config = {
     { 'wbthomason/packer.nvim', config = function()
         vim.keymap.set('n', ' rs', ':PackerSync<cr>')
     end },
@@ -15,12 +16,12 @@ return require('packer').startup({{
         vim.keymap.set('n', ' tc', ':ColorizerToggle<cr>')
     end },
     { 'nvim-telescope/telescope.nvim', config = function()
-        vim.keymap.set('n', ' sf', ":lua require('telescope.builtin').find_files()<cr>")
-        vim.keymap.set('n', ' st', ":lua require('telescope.builtin').live_grep()<cr>")
-        vim.keymap.set('n', ' sg', ":lua require('telescope.builtin').git_files()<cr>")
-        vim.keymap.set('n', ' sb', ":lua require('telescope.builtin').buffers()<cr>")
-        vim.keymap.set('n', ' sk', ":lua require('telescope.builtin').keymaps()<cr>")
-        vim.keymap.set('n', ' sh', ":lua require('telescope.builtin').highlights()<cr>")
+        vim.keymap.set('n', ' ff', ":lua require('telescope.builtin').find_files()<cr>")
+        vim.keymap.set('n', ' ft', ":lua require('telescope.builtin').live_grep()<cr>")
+        vim.keymap.set('n', ' fg', ":lua require('telescope.builtin').git_files()<cr>")
+        vim.keymap.set('n', ' fb', ":lua require('telescope.builtin').buffers()<cr>")
+        vim.keymap.set('n', ' fk', ":lua require('telescope.builtin').keymaps()<cr>")
+        vim.keymap.set('n', ' fh', ":lua require('telescope.builtin').highlights()<cr>")
     end },
     { 'nvim-treesitter/nvim-treesitter', config = function()
         require('nvim-treesitter.configs').setup({
@@ -34,7 +35,7 @@ return require('packer').startup({{
     run = ':TSUpdate' },
     { 'nvim-treesitter/playground', config = function()
         vim.keymap.set('n', ' tp', ':TSPlaygroundToggle<cr>')
-        vim.keymap.set('n', ' ph', ':TSHighlightCapturesUnderCursor<cr>')
+        vim.keymap.set('n', ' th', ':TSHighlightCapturesUnderCursor<cr>')
     end },
     { 'lewis6991/gitsigns.nvim', config = function()
         require('gitsigns').setup()
@@ -113,7 +114,7 @@ return require('packer').startup({{
                     version = 'LuaJIT',
                     path = vim.split(package.path, ';'),
                     diagnostics = {
-                        globals = { 'vim', 'hs' }, -- recognize globals
+                        globals = { 'vim', 'hs' },
                     },
                     workspace = {
                         library = {
@@ -135,4 +136,6 @@ return require('packer').startup({{
     { 'mickael-menu/zk-nvim', config = function()
       require('zk').setup()
     end },
-}})
+}
+
+return require('packer').startup({ config })
