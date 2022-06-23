@@ -24,10 +24,12 @@ return require('packer').startup({{
     end },
     { 'nvim-treesitter/nvim-treesitter', config = function()
         require('nvim-treesitter.configs').setup({
-            ensure_installed = { 'lua', 'rust', 'markdown', 'html', 'css', 'javascript', 'typescript', 'vim', 'svelte', 'json', 'toml', 'yaml', 'vim' },
+            ensure_installed = { 'java', 'lua', 'rust', 'markdown', 'html', 'css', 'javascript', 'typescript', 'vim', 'svelte', 'json', 'toml', 'yaml', 'vim' },
             highlight = { enable = true },
             playground = { enable = true },
         })
+        local ft_to_parser = require('nvim-treesitter.parsers').filetype_to_parsername
+        ft_to_parser.apexcode = 'java'
     end,
     run = ':TSUpdate' },
     { 'nvim-treesitter/playground', config = function()
@@ -82,10 +84,15 @@ return require('packer').startup({{
         vim.keymap.set('n', ' ra', ':lua vim.lsp.buf.code_action()<cr>')
         vim.keymap.set('n', ' gn', ':lua vim.lsp.diagnostic.goto_next()<cr>')
         vim.keymap.set('n', ' gp', ':lua vim.lsp.diagnostic.goto_prev()<cr>')
-        local installation_path = '/usr/local/Cellar/lua-language-server/2.5.3/libexec'
-        local binary = installation_path .. '/bin/macOS/lua-language-server'
+        local installation_path = '/Users/franciscocornejogarcia/homebrew/Cellar/lua-language-server/2.6.7/libexec'
+        local binary = installation_path .. '/bin/lua-language-server'
         local capabilities = vim.lsp.protocol.make_client_capabilities()
         capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+        require('lspconfig').apex_ls.setup({
+            apex_jar_path = '/Users/franciscocornejogarcia/apex-jorje-lsp.jar',
+            apex_enable_semantic_errors = false,
+            apex_enable_completion_statistics = false,
+        })
         require('lspconfig').tsserver.setup({
             on_attach = function(client, bufnr)
                 client.resolved_capabilities.document_formatting = false

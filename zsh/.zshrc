@@ -49,5 +49,10 @@ alias luamake=/Users/fjcg/repositories/lua-language-server/3rd/luamake/luamake
 
 export FZF_DEFAULT_COMMAND="fd -H . $HOME"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
 bindkey "ç" fzf-cd-widget
 export PATH="/usr/local/opt/ruby/bin:$PATH"
+
+eval 
+SFDX_AC_ZSH_SETUP_PATH=/Users/franciscocornejogarcia/Library/Caches/sfdx/autocomplete/zsh_setup && test -f $SFDX_AC_ZSH_SETUP_PATH && source $SFDX_AC_ZSH_SETUP_PATH; # sfdx autocomplete setupeval 
+SFDX_AC_ZSH_SETUP_PATH=/Users/franciscocornejogarcia/Library/Caches/sfdx/autocomplete/zsh_setup && test -f $SFDX_AC_ZSH_SETUP_PATH && source $SFDX_AC_ZSH_SETUP_PATH; # sfdx autocomplete setup
