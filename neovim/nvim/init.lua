@@ -26,6 +26,12 @@ vim.keymap.set('t', '<C-w>j', '<C-\\><C-N><C-w>j')
 vim.keymap.set('t', '<C-w>k', '<C-\\><C-N><C-w>k')
 vim.keymap.set('t', '<C-w>l', '<C-\\><C-N><C-w>l')
 
+-- Salesforce Config
+vim.api.nvim_create_autocmd({'BufWrite'}, {
+    pattern = {'*.cls', '*.trigger', '*.apex', '*.html', '*.css', '*.js'},
+    command = '!sfdx force:source:deploy -p %',
+})
+
 vim.opt.colorcolumn = '80'                     -- Highlight column line
 vim.opt.cursorline = true                      -- Highlight cursor line
 vim.opt.expandtab = true                       -- Turn tab to spaces

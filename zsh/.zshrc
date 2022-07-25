@@ -7,6 +7,9 @@ export PATH=$PATH:./node_modules/.bin
 export JAVA_HOME='/Users/fjcg/Library/Java/JavaVirtualMachines/openjdk-17/Contents/Home'
 export EDITOR='nvim'
 eval "$(homebrew/bin/brew shellenv)"
+show_org() { 
+    sfdx config:get defaultusername --json | jq '.result[].value' -r
+}
 
 # Prompt -----------------------------------------------------------------------
 autoload -Uz vcs_info                            # autoload vcs_info
@@ -19,7 +22,7 @@ zstyle ':vcs_info:*' stagedstr '+'               # set symbol for staged
 zstyle ':vcs_info:git:*' formats '%F{white} (%b%u%c%f)'       # set default format
 zstyle ':vcs_info:git:*' actionformats '%F{white} (%b|%a%u%c%f)' # for git action
 
-PROMPT='%B%1~%b$vcs_info_msg_0_%(!.#.%(?.:.%F{red}:)%f '
+export PROMPT='%B%1~%b$vcs_info_msg_0_%(!.#.%(?.:.%F{red}:)%f[$(show_org)]: '
 
 # Zsh Plugins ------------------------------------------------------------------
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
@@ -38,10 +41,11 @@ alias fd='cd $(fzf)'
 alias ga='git add'
 alias gc='git commit -m'
 alias gd='git diff'
+alias gf='git fetch'
 alias gl='git log'
 alias gp='git push'
 alias gP='git pull'
-alias gs='git status'
+alias gs='git status --short --branch'
 
 alias luamake=/Users/fjcg/repositories/lua-language-server/3rd/luamake/luamake
 
