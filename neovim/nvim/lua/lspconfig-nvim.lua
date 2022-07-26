@@ -7,7 +7,7 @@ return { 'neovim/nvim-lspconfig', config = function()
     vim.keymap.set('n', ' ra', ':lua vim.lsp.buf.code_action()<cr>')
     vim.keymap.set('n', ' gn', ':lua vim.lsp.diagnostic.goto_next()<cr>')
     vim.keymap.set('n', ' gp', ':lua vim.lsp.diagnostic.goto_prev()<cr>')
-    local installation_path = vim.fn.expand('$HOME') .. '/homebrew/Cellar/lua-language-server/3.5.0/libexec'
+    local installation_path = vim.fn.expand('$HOME') .. '/homebrew/Cellar/lua-language-server/3.5.1/libexec'
     local binary = installation_path .. '/bin/lua-language-server'
     local capabilities = vim.lsp.protocol.make_client_capabilities()
     capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
