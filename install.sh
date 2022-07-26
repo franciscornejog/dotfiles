@@ -14,8 +14,8 @@ read -sp $'Go back to Terminal\n'
 
 # Defaults Settings ------------------------------------------------------------
 echo 'Removing apps from the Dock...'
-defaults write com.apple.dock persistent-apps -array
-killall Dock
+# defaults write com.apple.dock persistent-apps -array
+# killall Dock
 
 # Software Installation --------------------------------------------------------
 echo 'Installing Xcode Command Line Tools...'
@@ -23,18 +23,21 @@ echo 'Installing Xcode Command Line Tools...'
 
 echo 'Installing Homebrew...'
 if test ! $(which brew); then
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    mkdir -p $HOME/homebrew
+    curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C $HOME/homebrew
+    eval "$($HOME/homebrew/bin/brew shellenv)"
 fi
 
 brew update
+chmod -R go-w "$(brew --prefix)/share/zsh"
 
 echo 'Installing packages by Homebrew...'
-# Maybe: microsoft-word/excel/powerpoint, intellij-idea
 packages=(
     alacritty
     brave-browser
     discord
     exa
+    fzf
     git
     hammerspoon
     lua-language-server
@@ -42,6 +45,7 @@ packages=(
     luarocks
     neovim
     ripgrep
+    rust
     slack
     sqlite
     stow
@@ -57,21 +61,18 @@ for package in ${packages[@]}; do
     brew install $package
 done
 
+# Install plugins and key-bindings
+/Users/ocla/homebrew/opt/fzf/install
+
 # Install font
 brew tap homebrew/cask-fonts
 brew install --cask font-jetbrains-mono
 
 # Install luarocks packages
-luarocks install luasql-sqlite3 SQLITE_DIR=/usr/local/Cellar/sqlite/3.37.0/
-
-echo 'Installing Rust...'
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-rustup update
+# luarocks install luasql-sqlite3 SQLITE_DIR=/usr/local/Cellar/sqlite/3.37.0/
 
 echo 'Starting syncthing...'
 brew services start syncthing
-
-read -sp $'Install Wally\n'
 
 echo 'Set up dotfiles'
 # dotfiles in setup.sh

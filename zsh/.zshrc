@@ -6,10 +6,10 @@ export PATH=/usr/local/bin:$PATH
 export PATH=$PATH:./node_modules/.bin
 export JAVA_HOME='/Users/fjcg/Library/Java/JavaVirtualMachines/openjdk-17/Contents/Home'
 export EDITOR='nvim'
-eval "$(homebrew/bin/brew shellenv)"
 show_org() { 
     sfdx config:get defaultusername --json | jq '.result[].value' -r
 }
+eval "$($HOME/homebrew/bin/brew shellenv)"
 
 # Prompt -----------------------------------------------------------------------
 autoload -Uz vcs_info                            # autoload vcs_info
@@ -49,8 +49,9 @@ alias gs='git status --short --branch'
 
 alias luamake=/Users/fjcg/repositories/lua-language-server/3rd/luamake/luamake
 
-export FZF_DEFAULT_COMMAND="fd -H . $HOME/Documents/"
+export FZF_DEFAULT_COMMAND="find -H . $HOME/Documents/"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-eval 
-SFDX_AC_ZSH_SETUP_PATH=/Users/franciscocornejogarcia/Library/Caches/sfdx/autocomplete/zsh_setup && test -f $SFDX_AC_ZSH_SETUP_PATH && source $SFDX_AC_ZSH_SETUP_PATH; # sfdx autocomplete setup
+bindkey -e
+# eval 
+# SFDX_AC_ZSH_SETUP_PATH=/Users/franciscocornejogarcia/Library/Caches/sfdx/autocomplete/zsh_setup && test -f $SFDX_AC_ZSH_SETUP_PATH && source $SFDX_AC_ZSH_SETUP_PATH; # sfdx autocomplete setup
