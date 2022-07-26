@@ -35,6 +35,7 @@ vim.api.nvim_create_autocmd({'BufWrite'}, {
 vim.opt.colorcolumn = '80'                     -- Highlight column line
 vim.opt.cursorline = true                      -- Highlight cursor line
 vim.opt.expandtab = true                       -- Turn tab to spaces
+vim.opt.number = true                          -- Show number lines
 vim.opt.shiftwidth = 4                         -- Indent with spaces
 vim.opt.signcolumn = 'yes:1'                   -- Show info beside text
 vim.opt.smartindent = true                     -- Smart auto indenting
