@@ -2,16 +2,11 @@
 -- Author:  Francisco Cornejo-Garcia (franciscornejog)
 
 require('plugins')
+require('work')
 
 -- Insert when open and enter terminal
 vim.api.nvim_create_autocmd({'TermOpen', 'BufEnter'}, {
     pattern = 'term://*', command = 'start',
-})
-
--- Set filetype for Salesforce files
-vim.api.nvim_create_autocmd({'BufRead', 'BufNewFile'}, {
-    pattern = {'*.cls', '*.trigger', '*.apex'},
-    command = 'set filetype=apexcode',
 })
 
 vim.cmd('colorscheme noired')                  -- Set colorscheme
@@ -25,12 +20,6 @@ vim.keymap.set('t', '<C-w>h', '<C-\\><C-N><C-w>h')
 vim.keymap.set('t', '<C-w>j', '<C-\\><C-N><C-w>j')
 vim.keymap.set('t', '<C-w>k', '<C-\\><C-N><C-w>k')
 vim.keymap.set('t', '<C-w>l', '<C-\\><C-N><C-w>l')
-
--- Salesforce Config
-vim.api.nvim_create_autocmd({'BufWrite'}, {
-    pattern = {'*.cls', '*.trigger', '*.apex', '*.html', '*.css', '*.js'},
-    command = '!sfdx force:source:deploy -p %',
-})
 
 vim.opt.colorcolumn = '80'                     -- Highlight column line
 vim.opt.cursorline = true                      -- Highlight cursor line
