@@ -11,24 +11,12 @@ return { 'neovim/nvim-lspconfig', config = function()
     local binary = installation_path .. '/bin/lua-language-server'
     local capabilities = vim.lsp.protocol.make_client_capabilities()
     capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+    require('lspconfig').svelte.setup({})
     require('lspconfig').apex_ls.setup({
         apex_jar_path = '/Users/franciscocornejogarcia/apex-jorje-lsp.jar',
         apex_enable_semantic_errors = false,
         apex_enable_completion_statistics = false,
     })
-    require('lspconfig').tsserver.setup({
-        on_attach = function(client, bufnr)
-            client.resolved_capabilities.document_formatting = false
-            client.resolved_capabilities.document_range_formatting = false
-            local ts_utils = require('nvim-lsp-ts-utils')
-            ts_utils.setup({})
-            ts_utils.setup_client(client)
-            vim.keymap.set('n', ' ro', ':TSLspOrganize<cr>', { silent = true, buffer = bufnr })
-            vim.keymap.set('n', ' rr', ':TSLspRenameFile<cr>', { silent = true, buffer = bufnr })
-            vim.keymap.set('n', ' ri', ':TSLspImportAll<cr>', { silent = true, buffer = bufnr })
-        end,
-    })
-    require('lspconfig').svelte.setup({})
     require('lspconfig').sumneko_lua.setup({
         cmd = { binary, '-E', installation_path .. '/main.lua' },
         settings = {

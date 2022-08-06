@@ -1,12 +1,14 @@
 -- Set filetype for Apex files
-vim.api.nvim_create_autocmd({'BufRead', 'BufNewFile'}, {
-    pattern = {'*.cls', '*.trigger', '*.apex'},
-    command = 'set filetype=apexcode',
-})
+vim.filetype.add({ extension = {
+    st = 'apexcode',
+    cls = 'apexcode',
+    trigger = 'apexcode',
+    apex = 'apexcode',
+}})
 
 -- Deploy current component when saved
 vim.api.nvim_create_autocmd({'BufWrite'}, {
-    pattern = {'*.cls', '*.trigger', '*.apex', '*.html', '*.css', '*.js'},
+    pattern = {'*.cls', '*.trigger', '*.apex', 'lwc/*'},
     command = '!sfdx force:source:deploy -p %',
 })
 
