@@ -11,6 +11,3 @@ vim.api.nvim_create_autocmd({'BufWrite'}, {
     pattern = {'*.cls', '*.trigger', '*.apex', 'lwc/*'},
     command = '!sfdx force:source:deploy -p %',
 })
-
-
-
