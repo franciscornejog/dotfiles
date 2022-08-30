@@ -3,12 +3,10 @@
 
 # System Preferences -----------------------------------------------------------
 read -sp $'Go to System Preferences\n'
-read -sp $'Go to General to set dark mode\n'
 read -sp $'Go to Desktop & Screen Saver to set black background\n'
-read -sp $'Go to Dock & Menu Bar to hide them\n'
+read -sp $'Go to Dock to hide them\n'
 read -sp $'Go to Users & Groups to change profile picture\n'
-read -sp $'Go to iCloud to sync and set up Documents\n'
-read -sp $'Go to Notifications to turn them all off\n'
+read -sp $'Go to Notifications to configure them \n'
 read -sp $'Go to Sound to change output and turn off sound effects\n'
 read -sp $'Go back to Terminal\n'
 
