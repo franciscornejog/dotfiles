@@ -48,10 +48,9 @@ alias gp='git push'
 alias gP='git pull'
 alias gs='git status --short --branch'
 
-alias luamake=/Users/fjcg/repositories/lua-language-server/3rd/luamake/luamake
-
 export FZF_DEFAULT_COMMAND="find -H . $HOME/Documents/"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+source $HOME/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 bindkey -e
 # eval 

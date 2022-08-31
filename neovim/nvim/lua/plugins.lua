@@ -9,7 +9,7 @@ local plugins = {
     require('packer-nvim'), -- package manager
     'nvim-lua/plenary.nvim', -- helper
 
-    { 'williamboman/mason.nvim', config = require('mason').setup() },
+    require('mason-nvim'),
     require('mason-lspconfig-nvim'),
     'neovim/nvim-lspconfig',
     'simrat39/rust-tools.nvim',
@@ -30,10 +30,10 @@ local plugins = {
     require('treesitter-nvim'), -- syntax tree
     require('playground-nvim'), -- show syntax
     require('colorizer-nvim'), -- show colors
-    { 'numToStr/Comment.nvim', config = require('Comment').setup() },
-    { 'lewis6991/gitsigns.nvim', config = require('gitsigns').setup() },
-    { 'kylechui/nvim-surround', config = require('nvim-surround').setup() },
-    { 'franciscornejog/noired.nvim', config = vim.cmd('colorscheme noired') },
+    require('comment-nvim'), -- comment
+    require('gitsigns-nvim'), -- git
+    require('surround-nvim'), -- surround
+    require('noired-nvim'), -- theme
 }
 
 return require('packer').startup({ plugins })

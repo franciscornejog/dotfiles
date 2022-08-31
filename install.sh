@@ -27,25 +27,21 @@ if test ! $(which brew); then
 fi
 
 brew update
+brew analytics off
 chmod -R go-w "$(brew --prefix)/share/zsh"
 
 echo 'Installing packages by Homebrew...'
 packages=(
     alacritty
-    brave-browser
     discord
     exa
     fzf
     git
     hammerspoon
-    lua-language-server
-    luajit
-    luarocks
     neovim
     ripgrep
     rust
     slack
-    sqlite
     stow
     syncthing
     tmux
@@ -60,14 +56,12 @@ for package in ${packages[@]}; do
 done
 
 # Install plugins and key-bindings
-/Users/ocla/homebrew/opt/fzf/install
+$HOME/homebrew/opt/fzf/install
+# set rtp+=/Users/neuan/homebrew/opt/fzf
 
 # Install font
 brew tap homebrew/cask-fonts
 brew install --cask font-jetbrains-mono
-
-# Install luarocks packages
-# luarocks install luasql-sqlite3 SQLITE_DIR=/usr/local/Cellar/sqlite/3.37.0/
 
 echo 'Starting syncthing...'
 brew services start syncthing
