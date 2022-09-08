@@ -26,6 +26,7 @@ local plugins = {
     'mfussenegger/nvim-dap', -- debugger
     'jose-elias-alvarez/null-ls.nvim', -- nvim as lsp
 
+    require('autopairs-nvim'), -- autocomplete pairs
     require('telescope-nvim'), -- fuzzy finder
     require('treesitter-nvim'), -- syntax tree
     require('playground-nvim'), -- show syntax
