@@ -4,10 +4,11 @@ vim.filetype.add({ extension = {
     cls = 'apexcode',
     trigger = 'apexcode',
     apex = 'apexcode',
+    cmp = 'html',
 }})
 
 -- Deploy current component when saved
-vim.api.nvim_create_autocmd({'BufWrite'}, {
+vim.api.nvim_create_autocmd({'BufWritePost'}, {
     pattern = {'*.cls', '*.trigger', '*.apex', 'lwc/*'},
     command = '!sfdx force:source:deploy -p %',
 })

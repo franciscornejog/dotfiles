@@ -8,17 +8,20 @@ return { 'hrsh7th/nvim-cmp', config = function()
             end,
         },
         mapping = cmp.mapping.preset.insert({
+            ['<C-p>'] = cmp.mapping.select_prev_item(),
+            ['<C-n>'] = cmp.mapping.select_next_item(),
             ['<C-d>'] = cmp.mapping.scroll_docs(-4),
             ['<C-u>'] = cmp.mapping.scroll_docs(4),
+            ['<C-e>'] = cmp.mapping.confirm(),
         }),
-        sources = {
+        sources = cmp.config.sources({
             { name = 'nvim_lua' },
             { name = 'nvim_lsp' },
             { name = 'luasnip' },
             { name = 'buffer' },
             { name = 'path' },
             { name = 'cmdline' },
-        },
+        }),
         formatting = {
             format = function(entry, vim_item)
                 vim_item.menu = ({

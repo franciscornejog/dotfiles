@@ -55,3 +55,4 @@ source $HOME/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 bindkey -e
 # eval 
 # SFDX_AC_ZSH_SETUP_PATH=/Users/franciscocornejogarcia/Library/Caches/sfdx/autocomplete/zsh_setup && test -f $SFDX_AC_ZSH_SETUP_PATH && source $SFDX_AC_ZSH_SETUP_PATH; # sfdx autocomplete setup
+export PATH="/Users/neuan/homebrew/opt/arm-none-eabi-gcc@9/bin:$PATH"
