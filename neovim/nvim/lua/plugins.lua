@@ -15,16 +15,13 @@ local plugins = {
     'simrat39/rust-tools.nvim',
 
     require('cmp-nvim'), -- autocompletion
-    'L3MON4D3/LuaSnip', -- snippet manager
     'saadparwaiz1/cmp_luasnip',
     'hrsh7th/cmp-nvim-lsp',
     'hrsh7th/cmp-nvim-lua',
     'hrsh7th/cmp-buffer',
     'hrsh7th/cmp-path',
     'hrsh7th/cmp-cmdline',
-
-    'mfussenegger/nvim-dap', -- debugger
-    'jose-elias-alvarez/null-ls.nvim', -- nvim as lsp
+    'L3MON4D3/LuaSnip', -- snippet manager
 
     require('autopairs-nvim'), -- autocomplete pairs
     require('telescope-nvim'), -- fuzzy finder
@@ -34,7 +31,7 @@ local plugins = {
     require('comment-nvim'), -- comment
     require('gitsigns-nvim'), -- git
     require('surround-nvim'), -- surround
-    require('noired-nvim'), -- theme
+    require('gruvbox-nvim'),
 }
 
 return require('packer').startup({ plugins })
