@@ -46,7 +46,8 @@ alias gf='git fetch'
 alias gl='git log'
 alias gp='git push'
 alias gP='git pull'
-alias gs='git status --short --branch'
+alias gs='git switch'
+alias gS='git status --short --branch'
 
 export FZF_DEFAULT_COMMAND="find -H . $HOME/Documents/"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
