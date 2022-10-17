@@ -31,7 +31,9 @@ local plugins = {
     require('comment-nvim'), -- comment
     require('gitsigns-nvim'), -- git
     require('surround-nvim'), -- surround
-    require('gruvbox-nvim'),
+    require('gruvbox-nvim'), -- theme
+
+    '~/1_projects/neovim-plugin',
 }
 
 return require('packer').startup({ plugins })

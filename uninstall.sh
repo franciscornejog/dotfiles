@@ -1,3 +1,7 @@
+#!/usr/bin/zsh
+# Personal Installation Configuration
+# Author: Francisco Cornejo-Garcia
+
 echo 'Uninstalling Xcode Command Line Tools...'
 sudo rm -rf /Library/Developer/CommandLineTools
 

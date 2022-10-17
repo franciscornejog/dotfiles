@@ -1,3 +1,4 @@
+#!/usr/bin/zsh
 # Personal Dotfiles Configuration
 # Author:  Francisco Cornejo-Garcia
 
@@ -8,7 +9,6 @@ mkdir -p $HOME/.config
 home=(
     hammerspoon
     tmux
-    vim
     zsh
 )
 

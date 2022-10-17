@@ -1,10 +1,11 @@
+#!/usr/bin/zsh
 # Personal Zsh Configuration
 # Author: Francisco Cornejo-Garcia (@franciscornejog)
 
 # Environment Variables --------------------------------------------------------
 export PATH=/usr/local/bin:$PATH
 export PATH=$PATH:./node_modules/.bin
-export JAVA_HOME='/Users/fjcg/Library/Java/JavaVirtualMachines/openjdk-17/Contents/Home'
+export JAVA_HOME='$HOME/Library/Java/JavaVirtualMachines/openjdk-17/Contents/Home'
 export EDITOR='nvim'
 show_org() { 
     sfdx config:get defaultusername --json | jq '.result[].value' -r
@@ -49,11 +50,11 @@ alias gP='git pull'
 alias gs='git switch'
 alias gS='git status --short --branch'
 
-export FZF_DEFAULT_COMMAND="find -H . $HOME/Documents/"
+export FZF_DEFAULT_COMMAND="find -H . $HOME/1_projects/"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 source $HOME/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
-bindkey -e
-# eval 
-# SFDX_AC_ZSH_SETUP_PATH=/Users/franciscocornejogarcia/Library/Caches/sfdx/autocomplete/zsh_setup && test -f $SFDX_AC_ZSH_SETUP_PATH && source $SFDX_AC_ZSH_SETUP_PATH; # sfdx autocomplete setup
-export PATH="/Users/neuan/homebrew/opt/arm-none-eabi-gcc@9/bin:$PATH"
+bindkey -v # vim keybindings
+export KEYTIMEOUT=1
+bindkey '^j' fzf-cd-widget
+export PATH="$HOME/homebrew/opt/arm-none-eabi-gcc@9/bin:$PATH"

@@ -1,130 +1,154 @@
-local modifier = { 'alt' }
+-- Default Modifier ------------------------------------------------------------
+local function bind(key, callback)
+    local modifier = {'alt'}
+    hs.hotkey.bind(modifier, key, callback)
+end
+
+-- Vim Mode in Safari
+local lastMode = nil
+local currentMode = nil
+local operatorPendingMode = hs.hotkey.modal.new()
+local insertMode = hs.hotkey.modal.new()
+local safariMode = hs.hotkey.modal.new()
+
+local modeItem = hs.menubar.new()
+local function setMode()
+    if currentMode == safariMode then
+        modeItem:setTitle('N')
+    elseif currentMode == insertMode then
+        modeItem:setTitle('I')
+    elseif currentMode == operatorPendingMode then
+        modeItem:setTitle('P')
+    else
+        modeItem:setTitle('')
+    end
+end
+
+operatorPendingMode:bind({}, 'g', 'Go to top', function()
+    hs.eventtap.keyStroke({'cmd'}, 'up')
+    currentMode = lastMode
+    setMode()
+    operatorPendingMode:exit()
+    currentMode:enter()
+end)
+operatorPendingMode:bind({}, 't', 'Go to next tab', function()
+    hs.eventtap.keyStroke({'cmd', 'shift'}, 'right')
+    currentMode = lastMode
+    setMode()
+    operatorPendingMode:exit()
+    currentMode:enter()
+end)
+operatorPendingMode:bind({'shift'}, 'T', 'Go to previous tab', function()
+    hs.eventtap.keyStroke({'cmd', 'shift'}, 'left')
+    currentMode = lastMode
+    setMode()
+    operatorPendingMode:exit()
+    currentMode:enter()
+end)
+
+insertMode:bind('ctrl', '[', 'Enter Insert Mode', function()
+    lastMode = currentMode
+    currentMode = safariMode
+    setMode()
+    lastMode:exit()
+    currentMode:enter()
+end)
+
+safariMode:bind({}, 'g', 'Enter Operator Pending Mode', function()
+    lastMode = currentMode
+    currentMode = operatorPendingMode
+    setMode()
+    lastMode:exit()
+    currentMode:enter()
+end)
+
+safariMode:bind({}, 'i', 'Exit Safari Mode', function()
+    lastMode = currentMode
+    currentMode = insertMode
+    setMode()
+    lastMode:exit()
+    currentMode:enter()
+end)
+
+safariMode:bind({'shift'}, 'G', 'Go to bottom', function()
+    hs.eventtap.keyStroke({'cmd'}, 'down')
+end)
+
+local function appWatcher(app, eventType)
+    if (eventType == hs.application.watcher.activated) then
+        if app == 'Safari' then
+            if currentMode == nil then
+                currentMode = safariMode
+            end
+            setMode()
+            currentMode:enter()
+            hs.alert.show('Enter Safari')
+        end
+    elseif eventType == hs.application.watcher.deactivated then
+        if app == 'Safari' then
+            lastMode = currentMode
+            currentMode = nil
+            setMode()
+            lastMode:exit()
+            hs.alert.show('Exit Safari')
+        end
+    end
+end
+hs.application.watcher.new(appWatcher):start()
 
 -- Window Management -----------------------------------------------------------
 hs.window.animationDuration = 0
-local function moveFocusedWindow(newWindow)
-    local window = hs.window.focusedWindow()
-    local frame = window:frame()
-    frame.x = newWindow.x
-    frame.y = newWindow.y
-    frame.w = newWindow.w
-    frame.h = newWindow.h
-    window:setFrame(frame)
+
+local function moveWindow(key, window)
+    bind(key, function()
+        local currentWindow = hs.window.focusedWindow()
+        currentWindow:moveToUnit(window)
+    end)
 end
 
-hs.hotkey.bind(modifier, 'H', function()
-    local screenFrame = hs.window.focusedWindow():screen():frame()
-    local newWindow = {
-        x = screenFrame.x,
-        y = screenFrame.y,
-        w = screenFrame.w / 2,
-        h = screenFrame.h }
-    moveFocusedWindow(newWindow)
-end)
+local keyToWindow = {
+    H = { 'leftHalf', {0, 0, 0.5, 1} },
+    L = { 'rightHalf', {0.5, 0, 0.5, 1} },
+    K = { 'topHalf', {0, 0, 1, 0.5} },
+    J = { 'bottomHalf', {0, 0.5, 1, 0.5} },
+    Y = { 'upperLeft', {0, 0, 0.5, 0.5} },
+    U = { 'upperRight', {0.5, 0, 0.5, 0.5} },
+    N = { 'lowerLeft', {0, 0.5, 0.5, 0.5} },
+    M = { 'lowerRight', {0.5, 0.5, 0.5, 0.5} },
+    I = { 'full', {0, 0, 1, 1} },
+}
 
-hs.hotkey.bind(modifier, 'L', function()
-    local screenFrame = hs.window.focusedWindow():screen():frame()
-    local newWindow = {
-        x = screenFrame.x + (screenFrame.w / 2),
-        y = screenFrame.y,
-        w = screenFrame.w / 2,
-        h = screenFrame.h }
-    moveFocusedWindow(newWindow)
-end)
-
-hs.hotkey.bind(modifier, 'K', function()
-    local screenFrame = hs.window.focusedWindow():screen():frame()
-    local newWindow = {
-        x = screenFrame.x,
-        y = screenFrame.y,
-        w = screenFrame.w,
-        h = screenFrame.h / 2 }
-    moveFocusedWindow(newWindow)
-end)
-
-hs.hotkey.bind(modifier, 'J', function()
-    local screenFrame = hs.window.focusedWindow():screen():frame()
-    local newWindow = {
-        x = screenFrame.x,
-        y = screenFrame.y + (screenFrame.h / 2),
-        w = screenFrame.w,
-        h = screenFrame.h / 2 }
-    moveFocusedWindow(newWindow)
-end)
-
--- Upper Left Quadrant
-hs.hotkey.bind(modifier, 'Y', function()
-    local screenFrame = hs.window.focusedWindow():screen():frame()
-    local newWindow = {
-        x = screenFrame.x,
-        y = screenFrame.y,
-        w = screenFrame.w / 2,
-        h = screenFrame.h / 2 }
-    moveFocusedWindow(newWindow)
-end)
-
--- Upper Right Quadrant
-hs.hotkey.bind(modifier, 'U', function()
-    local screenFrame = hs.window.focusedWindow():screen():frame()
-    local newWindow = {
-        x = screenFrame.x + (screenFrame.w / 2),
-        y = screenFrame.y,
-        w = screenFrame.w / 2,
-        h = screenFrame.h / 2 }
-    moveFocusedWindow(newWindow)
-end)
-
--- Lower Left Quadrant
-hs.hotkey.bind(modifier, 'N', function()
-    local screenFrame = hs.window.focusedWindow():screen():frame()
-    local newWindow = {
-        x = screenFrame.x,
-        y = screenFrame.y + (screenFrame.h / 2),
-        w = screenFrame.w / 2,
-        h = screenFrame.h / 2 }
-    moveFocusedWindow(newWindow)
-end)
-
--- Lower Right Quadrant
-hs.hotkey.bind(modifier, 'M', function()
-    local screenFrame = hs.window.focusedWindow():screen():frame()
-    local newWindow = {
-        x = screenFrame.x + (screenFrame.w / 2),
-        y = screenFrame.y + (screenFrame.h / 2),
-        w = screenFrame.w / 2,
-        h = screenFrame.h / 2 }
-    moveFocusedWindow(newWindow)
-end)
-
--- Full Screen
-hs.hotkey.bind(modifier, 'I', function()
-    local screenFrame = hs.window.focusedWindow():screen():frame()
-    local newWindow = {
-        x = screenFrame.x,
-        y = screenFrame.y,
-        w = screenFrame.w,
-        h = screenFrame.h }
-    moveFocusedWindow(newWindow)
-end)
+for key, window in pairs(keyToWindow) do
+    moveWindow(key, window[2])
+end
 
 -- Application Hotkeys ---------------------------------------------------------
-local function open(hotkey, application)
-  hs.hotkey.bind(modifier, hotkey, function()
+local function open(key, application)
+  bind(key, function()
     hs.application.launchOrFocus(application)
   end)
 end
 
-open('A', 'Alacritty')
-open('S', 'Safari')
-open('C', 'Google Chrome')
-open('V', 'Visual Studio Code')
-open('W', 'Slack')
+local keyToApp = {
+    D = 'Alacritty',
+    F = { 'Safari', 'Google Chrome' },
+    S = 'Slack',
+    A = 'Visual Studio Code',
+}
+
+for key, app in pairs(keyToApp) do
+    if type(app) == 'table' then
+        local user = os.getenv('USER')
+        app = user == 'neuan' and app[1] or app[2]
+    end
+    open(key, app)
+end
 
 -- Menu ------------------------------------------------------------------------
 -- local menuModalKey = hs.hotkey.modal.new(modifier, 'O', 'MenuMode')
 -- menuModalKey:bind(modifier, 'O', 'Quit MenuMode', function() menuModalKey:exit() end)
 local chooser = hs.chooser.new(function(choice)
-    if (choice['text'] == 'Sleep') then
+    if choice['text'] == 'Sleep' then
         hs.caffeinate.systemSleep()
     end
 end)
@@ -136,9 +160,6 @@ chooser:choices({
 hs.hotkey.bind({ 'ctrl' }, 'space', function()
     chooser:show()
 end)
-
-
-
 
 -- Reload Configuration --------------------------------------------------------
 local function reloadConfig(files)
@@ -153,5 +174,5 @@ local function reloadConfig(files)
     end
 end
 local homePath = os.getenv('HOME') .. '/.hammerspoon'
-WATCHER = hs.pathwatcher.new(homePath, reloadConfig):start()
+hs.pathwatcher.new(homePath, reloadConfig):start()
 hs.alert.show('Config loaded')

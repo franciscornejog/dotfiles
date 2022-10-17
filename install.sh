@@ -1,3 +1,4 @@
+#!/usr/bin/zsh
 # Personal Installation Configuration
 # Author: Francisco Cornejo-Garcia
 
@@ -12,12 +13,12 @@ read -sp $'Go back to Terminal\n'
 
 # Defaults Settings ------------------------------------------------------------
 echo 'Removing apps from the Dock...'
-# defaults write com.apple.dock persistent-apps -array
-# killall Dock
+defaults write com.apple.dock persistent-apps -array
+killall Dock
 
 # Software Installation --------------------------------------------------------
 echo 'Installing Xcode Command Line Tools...'
-# xcode-select --install
+xcode-select --install
 
 echo 'Installing Homebrew...'
 if test ! $(which brew); then
@@ -45,7 +46,6 @@ packages=(
     stow
     syncthing
     tmux
-    z
     zoom
     zsh
     zsh-autosuggestions
@@ -56,8 +56,7 @@ for package in ${packages[@]}; do
 done
 
 # Install plugins and key-bindings
-$HOME/homebrew/opt/fzf/install
-# set rtp+=/Users/neuan/homebrew/opt/fzf
+$(brew --prefix)/opt/fzf/install
 
 # Install font
 brew tap homebrew/cask-fonts
@@ -66,6 +65,10 @@ brew install --cask font-jetbrains-mono
 echo 'Starting syncthing...'
 brew services start syncthing
 
-echo 'Set up dotfiles'
-# dotfiles in setup.sh
+echo 'Grant permissions to setup.sh and uninstall.sh...'
+sudo chmod +x setup.sh
+sudo chmod +x uninstall.sh
+
+echo 'Set up dotfiles...'
+./setup.sh
 
