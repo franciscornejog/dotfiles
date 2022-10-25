@@ -1,4 +1,3 @@
-#!/usr/bin/zsh
 # Personal Dotfiles Configuration
 # Author:  Francisco Cornejo-Garcia
 
@@ -15,22 +14,23 @@ home=(
 # Config -----------------------------------------------------------------------
 config=(
     alacritty
+    gh
     git
     neovim
+    starship
 )
 
 # Stow -------------------------------------------------------------------------
-stowin() {
+stow_in() {
     target=$1
     source=$2
-    # -verbose -Recursive -target
-    stow -v -R -t ${target} ${source}
+    stow --verbose --restow --target ${target} ${source}
 }
 
 for app in ${home[@]}; do
-    stowin "${HOME}" $app
+    stow_in "${HOME}" $app
 done
 
 for app in ${config[@]}; do
-    stowin "${HOME}/.config/" $app
+    stow_in "${HOME}/.config/" $app
 done

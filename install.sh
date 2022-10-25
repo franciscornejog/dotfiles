@@ -37,12 +37,14 @@ packages=(
     discord
     exa
     fzf
+    gh
     git
     hammerspoon
     neovim
     ripgrep
     rust
     slack
+    starship
     stow
     syncthing
     tmux
