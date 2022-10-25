@@ -9,6 +9,6 @@ vim.filetype.add({ extension = {
 
 -- Deploy current component when saved
 vim.api.nvim_create_autocmd({'BufWritePost'}, {
-    pattern = {'*.cls', '*.trigger', '*.apex', 'lwc/*'},
+    pattern = {'*.cls', '*.trigger', '*.apex', 'lwc/*/*.js', 'lwc/*/*.html', 'lwc/*/*.css'},
     command = '!sfdx force:source:deploy -p %',
 })

@@ -4,10 +4,12 @@
 require('plugins')
 require('work')
 
-vim.keymap.set('n', ' fv', ':edit ~/.config/nvim/init.lua<cr>')
+vim.keymap.set('n', ' fv', ':tabedit ~/.config/nvim/init.lua<cr>')
 vim.keymap.set('n', 'n', 'nzzzv')
 vim.keymap.set('n', 'N', 'Nzzzv')
 vim.keymap.set('n', 'J', 'mjJ`j')
+vim.keymap.set('n', 'gb', ':bnext<cr>')
+vim.keymap.set('n', 'gB', ':bprevious<cr>')
 
 vim.opt.colorcolumn = '80'             -- Highlight column line
 vim.opt.cursorline = true              -- Highlight cursor line

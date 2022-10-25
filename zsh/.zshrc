@@ -30,6 +30,7 @@ alias ff='vi $(find $HOME/1_projects $HOME/2_areas $HOME/3_resources $HOME/4_arc
 alias fd='cd $(find $HOME/1_projects $HOME/2_areas $HOME/3_resources $HOME/4_archive -type d -d 1 -print | fzf)'
 
 alias ga='git add'
+alias gb='git branch'
 alias gc='git commit -m'
 alias gd='git diff'
 alias gf='git fetch'
@@ -41,7 +42,7 @@ alias gS='git status --short --branch'
 
 export FZF_DEFAULT_COMMAND="find -H $HOME/1_projects/ $HOME/2_areas  $HOME/3_resources $HOME/4_archive"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-source $HOME/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 bindkey -e # emac keybindings
 bindkey '^j' fzf-cd-widget
