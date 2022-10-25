@@ -2,13 +2,6 @@
 # Author: Francisco Cornejo-Garcia (@franciscornejog)
 
 window:
-  dimensions:
-    columns: 182
-    lines: 89
-  position:
-    x: 0
-    y: 0
-
   padding:
     x: 1
     y: 1
