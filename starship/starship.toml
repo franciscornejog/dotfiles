@@ -1,5 +1,5 @@
 add_newline = false
-right_format = "$cmd_duration"
+right_format = "$memory_usage$cmd_duration"
 
 [character]
 success_symbol = "[:](bold white)"
@@ -43,8 +43,7 @@ symbol = "lua "
 format = '\[[$symbol]($style)\]'
 
 [memory_usage]
-symbol = "memory "
-format = '\[$symbol[$ram( | $swap)]($style)\]'
+format = '\[[$ram_pct(|$swap_pct)]($style)\]'
 disabled = false
 
 [package]
