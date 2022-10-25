@@ -33,7 +33,9 @@ local plugins = {
     require('surround-nvim'), -- surround
     require('gruvbox-nvim'), -- theme
 
-    '~/1_projects/neovim-plugin',
+    {'~/1_projects/neovim-plugin', config = function()
+        require('neovim-plugin').setup()
+    end},
 }
 
 return require('packer').startup({ plugins })

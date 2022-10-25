@@ -13,18 +13,7 @@ show_org() {
 eval "$($HOME/homebrew/bin/brew shellenv)"
 
 # Prompt -----------------------------------------------------------------------
-autoload -Uz vcs_info                            # autoload vcs_info
-precmd() { vcs_info }                            # show vcs_info as function
-setopt prompt_subst                              # enable substitution in prompt
-zstyle ':vcs_info:*' enable git                  # only enable git
-zstyle ':vcs_info:*' check-for-changes true      # check for unstaged changes
-zstyle ':vcs_info:*' unstagedstr '*'             # set symbol for unstaged
-zstyle ':vcs_info:*' stagedstr '+'               # set symbol for staged
-zstyle ':vcs_info:git:*' formats '%F{white} (%b%u%c%f)'       # set default format
-zstyle ':vcs_info:git:*' actionformats '%F{white} (%b|%a%u%c%f)' # for git action
-
-# export PROMPT='%B%1~%b$vcs_info_msg_0_%(!.#.%(?.:.%F{red}:)%f[$(show_org)]: '
-export PROMPT='%B%1~%b$vcs_info_msg_0_%(!.#.%(?.:.%F{red}:)%f '
+eval "$(starship init zsh)"
 
 # Zsh Plugins ------------------------------------------------------------------
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
@@ -37,8 +26,8 @@ alias ..='cd ..'
 alias ...='cd ../..'
 
 alias fv='cd ~/.config/nvim'
-alias ff='vi $(fzf)'
-alias fd='cd $(fzf)'
+alias ff='vi $(find $HOME/1_projects $HOME/2_areas $HOME/3_resources $HOME/4_archive -print | fzf)'
+alias fd='cd $(find $HOME/1_projects $HOME/2_areas $HOME/3_resources $HOME/4_archive -type d -d 1 -print | fzf)'
 
 alias ga='git add'
 alias gc='git commit -m'
@@ -50,11 +39,10 @@ alias gP='git pull'
 alias gs='git switch'
 alias gS='git status --short --branch'
 
-export FZF_DEFAULT_COMMAND="find -H . $HOME/1_projects/"
+export FZF_DEFAULT_COMMAND="find -H $HOME/1_projects/ $HOME/2_areas  $HOME/3_resources $HOME/4_archive"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 source $HOME/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
-bindkey -v # vim keybindings
-export KEYTIMEOUT=1
+bindkey -e # emac keybindings
 bindkey '^j' fzf-cd-widget
 export PATH="$HOME/homebrew/opt/arm-none-eabi-gcc@9/bin:$PATH"

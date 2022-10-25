@@ -24,21 +24,26 @@ local function setMode()
     end
 end
 
-operatorPendingMode:bind({}, 'g', 'Go to top', function()
+-- Go to top of page
+operatorPendingMode:bind({}, 'g', function()
     hs.eventtap.keyStroke({'cmd'}, 'up')
     currentMode = lastMode
     setMode()
     operatorPendingMode:exit()
     currentMode:enter()
 end)
-operatorPendingMode:bind({}, 't', 'Go to next tab', function()
+
+-- Go to next tab
+operatorPendingMode:bind({}, 't', function()
     hs.eventtap.keyStroke({'cmd', 'shift'}, 'right')
     currentMode = lastMode
     setMode()
     operatorPendingMode:exit()
     currentMode:enter()
 end)
-operatorPendingMode:bind({'shift'}, 'T', 'Go to previous tab', function()
+
+-- Go to previous tab
+operatorPendingMode:bind({'shift'}, 'T', function()
     hs.eventtap.keyStroke({'cmd', 'shift'}, 'left')
     currentMode = lastMode
     setMode()
@@ -46,7 +51,8 @@ operatorPendingMode:bind({'shift'}, 'T', 'Go to previous tab', function()
     currentMode:enter()
 end)
 
-insertMode:bind('ctrl', '[', 'Enter Insert Mode', function()
+-- Exit Insert Mode
+insertMode:bind('ctrl', '[', function()
     lastMode = currentMode
     currentMode = safariMode
     setMode()
@@ -54,7 +60,8 @@ insertMode:bind('ctrl', '[', 'Enter Insert Mode', function()
     currentMode:enter()
 end)
 
-safariMode:bind({}, 'g', 'Enter Operator Pending Mode', function()
+-- Enter Operator Pending Mode
+safariMode:bind({}, 'g', function()
     lastMode = currentMode
     currentMode = operatorPendingMode
     setMode()
@@ -62,7 +69,8 @@ safariMode:bind({}, 'g', 'Enter Operator Pending Mode', function()
     currentMode:enter()
 end)
 
-safariMode:bind({}, 'i', 'Exit Safari Mode', function()
+-- Enter Insert Mode
+safariMode:bind({}, 'i', function()
     lastMode = currentMode
     currentMode = insertMode
     setMode()
@@ -70,7 +78,8 @@ safariMode:bind({}, 'i', 'Exit Safari Mode', function()
     currentMode:enter()
 end)
 
-safariMode:bind({'shift'}, 'G', 'Go to bottom', function()
+-- Go to bottom of page
+safariMode:bind({'shift'}, 'G', function()
     hs.eventtap.keyStroke({'cmd'}, 'down')
 end)
 
@@ -82,7 +91,6 @@ local function appWatcher(app, eventType)
             end
             setMode()
             currentMode:enter()
-            hs.alert.show('Enter Safari')
         end
     elseif eventType == hs.application.watcher.deactivated then
         if app == 'Safari' then
@@ -90,7 +98,6 @@ local function appWatcher(app, eventType)
             currentMode = nil
             setMode()
             lastMode:exit()
-            hs.alert.show('Exit Safari')
         end
     end
 end
