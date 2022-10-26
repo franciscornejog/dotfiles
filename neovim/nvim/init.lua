@@ -10,6 +10,8 @@ vim.keymap.set('n', 'N', 'Nzzzv')
 vim.keymap.set('n', 'J', 'mjJ`j')
 vim.keymap.set('n', 'gb', ':bnext<cr>')
 vim.keymap.set('n', 'gB', ':bprevious<cr>')
+vim.keymap.set('n', ' tt', ':PlenaryBustedDirectory spec<cr>')
+vim.keymap.set('n', ' tr', ":lua require('plenary.reload').reload_module('neoam')<cr>")
 
 vim.opt.colorcolumn = '80'             -- Highlight column line
 vim.opt.cursorline = true              -- Highlight cursor line

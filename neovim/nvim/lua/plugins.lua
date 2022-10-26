@@ -33,8 +33,8 @@ local plugins = {
     require('surround-nvim'), -- surround
     require('gruvbox-nvim'), -- theme
 
-    {'~/1_projects/neovim-plugin', config = function()
-        require('neovim-plugin').setup()
+    {'~/1_projects/neoam', config = function()
+        require('neoam').setup()
     end},
 }
 

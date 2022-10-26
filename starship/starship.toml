@@ -1,14 +1,14 @@
 add_newline = false
+format = """
+$username$hostname$localip$directory\
+$git_branch$git_commit$git_state$git_status\
+$custom$sudo$character"""
 right_format = "$memory_usage$cmd_duration"
 
 [character]
 success_symbol = "[:](bold white)"
 error_symbol = "[:](bold red)"
 vimcmd_symbol = "[:](bold purple)"
-
-[c]
-symbol = "C "
-format = '\[[$symbol($version(-$name))]($style)\]'
 
 [cmd_duration]
 format = '\[[$duration]($style)\]'
@@ -31,35 +31,9 @@ modified = "*"
 stashed = "#"
 format = '([$all_status$ahead_behind](#fe8019))\)'
 
-[java]
-symbol = "java "
-format = '\[[$symbol]($style)\]'
-
-[line_break]
-disabled = true
-
-[lua]
-symbol = "lua "
-format = '\[[$symbol]($style)\]'
-
 [memory_usage]
 format = '\[[$ram_pct(|$swap_pct)]($style)\]'
 disabled = false
-
-[package]
-disabled = true
-
-[python]
-symbol = "py "
-format = '\[[${symbol}${pyenv_prefix}(${version})(\($virtualenv\))]($style)\]'
-
-[ruby]
-symbol = "rb "
-format = '\[[$symbol]($style)\]'
-
-[rust]
-symbol = "rs "
-format = '\[[$symbol]($style)\]'
 
 [username]
 format = '\[[$user]($style)\]'
