@@ -27,7 +27,7 @@ return { 'williamboman/mason-lspconfig.nvim',
                     settings = {
                         Lua = {
                             diagnostics = {
-                                globals = { 'hs', 'vim' }
+                                globals = { 'hs', 'vim', 'it', 'describe' }
                             },
                         },
                     },
