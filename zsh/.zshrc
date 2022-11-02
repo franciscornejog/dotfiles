@@ -27,6 +27,7 @@ alias ...='cd ../..'
 
 alias fv='cd ~/.config/nvim'
 alias ff='vi $(find $HOME/1_projects $HOME/2_areas $HOME/3_resources $HOME/4_archive -print | fzf)'
+alias fp='vi $(find . | fzf)'
 alias fd='cd $(find $HOME/1_projects $HOME/2_areas $HOME/3_resources $HOME/4_archive -type d -d 1 -print | fzf)'
 
 alias ga='git add'
