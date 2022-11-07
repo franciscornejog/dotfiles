@@ -32,10 +32,6 @@ local plugins = {
     require('gitsigns-nvim'), -- git
     require('surround-nvim'), -- surround
     require('gruvbox-nvim'), -- theme
-
-    {'~/1_projects/neoam', config = function()
-        require('neoam').setup()
-    end},
 }
 
 return require('packer').startup({ plugins })
