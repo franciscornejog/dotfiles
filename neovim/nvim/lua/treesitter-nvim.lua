@@ -2,10 +2,12 @@ return { 'nvim-treesitter/nvim-treesitter', config = function()
     require('nvim-treesitter.configs').setup({
         ensure_installed = {
             'css',
+            'go',
             'html',
             'java',
             'javascript',
             'lua',
+            'python',
             'rust',
             'svelte',
             'toml',

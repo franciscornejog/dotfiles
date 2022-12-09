@@ -1,4 +1,9 @@
-return { 'hrsh7th/nvim-cmp', config = function()
+return { 'hrsh7th/nvim-cmp', {
+    'hrsh7th/cmp-nvim-lsp',
+    'hrsh7th/cmp-nvim-lua',
+    'hrsh7th/cmp-buffer',
+    'hrsh7th/cmp-path',
+    'hrsh7th/cmp-cmdline', }, config = function()
     vim.opt.completeopt = { 'menu', 'menuone', 'noselect' }
     local cmp = require('cmp')
     cmp.setup({

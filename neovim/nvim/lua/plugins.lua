@@ -7,22 +7,11 @@ end
 
 local plugins = {
     require('packer-nvim'), -- package manager
-    'nvim-lua/plenary.nvim', -- helper
-
-    require('mason-nvim'),
+    require('plenary-nvim'), -- helper
+    require('mason-nvim'), -- lsp
     require('mason-lspconfig-nvim'),
-    'neovim/nvim-lspconfig',
-    'simrat39/rust-tools.nvim',
-
     require('cmp-nvim'), -- autocompletion
-    'saadparwaiz1/cmp_luasnip',
-    'hrsh7th/cmp-nvim-lsp',
-    'hrsh7th/cmp-nvim-lua',
-    'hrsh7th/cmp-buffer',
-    'hrsh7th/cmp-path',
-    'hrsh7th/cmp-cmdline',
-    'L3MON4D3/LuaSnip', -- snippet manager
-
+    require('luasnip-nvim'), -- snippets
     require('autopairs-nvim'), -- autocomplete pairs
     require('telescope-nvim'), -- fuzzy finder
     require('treesitter-nvim'), -- syntax tree
@@ -32,6 +21,7 @@ local plugins = {
     require('gitsigns-nvim'), -- git
     require('surround-nvim'), -- surround
     require('gruvbox-nvim'), -- theme
+    require('neotest-nvim'), -- test
 }
 
 return require('packer').startup({ plugins })

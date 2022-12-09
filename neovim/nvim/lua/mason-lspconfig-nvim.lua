@@ -1,4 +1,5 @@
 return { 'williamboman/mason-lspconfig.nvim',
+    requires = { 'neovim/nvim-lspconfig', 'simrat39/rust-tools.nvim', },
     config = function()
         vim.keymap.set('n', ' gd', vim.lsp.buf.definition)
         vim.keymap.set('n', ' gD', vim.lsp.buf.declaration)
