@@ -8,6 +8,9 @@ export PATH=$PATH:./node_modules/.bin
 export JAVA_HOME='$HOME/Library/Java/JavaVirtualMachines/openjdk-17/Contents/Home'
 export EDITOR='nvim'
 eval "$($HOME/homebrew/bin/brew shellenv)"
+export TDD_PROJECT_ROOT=/Users/neuan/1_projects/tdd-project
+export GO111MODULE="on"
+export GOPATH=""
 
 # Prompt -----------------------------------------------------------------------
 eval "$(starship init zsh)"
