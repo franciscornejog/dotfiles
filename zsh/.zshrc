@@ -57,6 +57,10 @@ slc() {
 sac() {
     sfdx force:apex:class:create -n $1 --outputdir=force-app/main/default/classes
 }
+# create apex trigger
+stc() {
+    sfdx force:apex:trigger:create -n $1 --outputdir=force-app/main/default/triggers
+}
 # get org
 alias scg="sfdx config:get defaultusername --json | jq '.result[].value' -r"
 # set org
