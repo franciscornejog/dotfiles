@@ -1,5 +1,9 @@
 return { 'nvim-neotest/neotest',
-    requires = { 'nvim-neotest/neotest-go', 'nvim-neotest/neotest-python' },
+    requires = {
+        'nvim-neotest/neotest-go',
+        'nvim-neotest/neotest-python',
+        'rouge8/neotest-rust',
+    },
     config = function()
         vim.keymap.set('n', ' ta', function() require('neotest').run.attach() end)
         vim.keymap.set('n', ' tr', function() require('neotest').run.run() end)
@@ -14,6 +18,7 @@ return { 'nvim-neotest/neotest',
                 require('neotest-python')({
                     runner = 'unittest',
                 }),
+                require('neotest-rust')
             },
             icons = {
                 failed = 'X',

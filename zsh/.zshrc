@@ -41,6 +41,9 @@ alias gP='git pull'
 alias gs='git switch'
 alias gS='git status --short --branch'
 
+alias jc='javac -d build/ src/provided/*.java src/testers/*.java'
+alias jr='java -cp build testers.JottTokenizerTester'
+
 export FZF_DEFAULT_COMMAND="find -H $HOME/1_projects/ $HOME/2_areas  $HOME/3_resources $HOME/4_archive"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
