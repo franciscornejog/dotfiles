@@ -15,7 +15,7 @@ local plugins = {
     require('playground-nvim'), -- show syntax
     require('colorizer-nvim'), -- show colors
     require('comment-nvim'), -- comment
-    require('gitsigns-nvim'), -- git
+    require('git-nvim'), -- git
     require('surround-nvim'), -- surround
     require('gruvbox-nvim'), -- theme
     require('neotest-nvim'), -- test

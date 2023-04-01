@@ -139,8 +139,8 @@ end
 local keyToApp = {
     D = 'Alacritty',
     F = { 'Safari', 'Google Chrome' },
-    S = 'Slack',
-    A = 'Visual Studio Code',
+    S = { 'Discord', 'Slack' },
+    A = 'Preview',
 }
 
 for key, app in pairs(keyToApp) do
