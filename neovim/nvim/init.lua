@@ -21,7 +21,7 @@ vim.keymap.set('n', 'J', 'mjJ`j')
 vim.keymap.set('n', 'gb', ':bnext<cr>')
 vim.keymap.set('n', 'gB', ':bprevious<cr>')
 
-vim.o.colorcolumn = '80'            -- Highlight column line
+vim.o.colorcolumn = '100'           -- Highlight column line
 vim.o.cursorline = true             -- Highlight cursor line
 vim.o.expandtab = true              -- Turn tab to spaces
 vim.o.ignorecase = true             -- Search case insensitive
