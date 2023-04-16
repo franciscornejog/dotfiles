@@ -5,15 +5,16 @@
 # Environment Variables --------------------------------------------------------
 export PATH=/usr/local/bin:$PATH
 export PATH=$PATH:./node_modules/.bin
-export JAVA_HOME='$HOME/Library/Java/JavaVirtualMachines/openjdk-17/Contents/Home'
 export EDITOR='nvim'
-eval "$($HOME/homebrew/bin/brew shellenv)"
-export TDD_PROJECT_ROOT=/Users/neuan/1_projects/tdd-project
 export GO111MODULE="on"
 export GOPATH=""
+export JAVA_HOME='$HOME/Library/Java/JavaVirtualMachines/openjdk-17/Contents/Home'
+export TDD_PROJECT_ROOT=/Users/neuan/1_projects/tdd-project
 
-# Prompt -----------------------------------------------------------------------
+# Apps -------------------------------------------------------------------------
+eval "$($HOME/homebrew/bin/brew shellenv)"
 eval "$(starship init zsh)"
+eval "$(zoxide init zsh)"
 
 # Zsh Plugins ------------------------------------------------------------------
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
@@ -45,6 +46,7 @@ alias jc='javac -d build/ src/provided/*.java src/treeNodes/*.java src/testers/*
 alias jt='java -cp build testers.JottTokenizerTester'
 alias jp='java -cp build testers.JottParserTester'
 alias jv='java -cp build testers.JottValidatorTester'
+alias js='java -cp build testers.JottSpaceTester'
 
 export FZF_DEFAULT_COMMAND="find -H $HOME/1_projects/ $HOME/2_areas  $HOME/3_resources $HOME/4_archive"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
