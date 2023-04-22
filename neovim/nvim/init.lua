@@ -8,18 +8,24 @@ require('neoam')
 vim.diagnostic.config({ virtual_text = false })
 
 vim.keymap.set('n', ' do', vim.diagnostic.open_float)
-vim.keymap.set('n', ' dp', vim.diagnostic.goto_prev)
-vim.keymap.set('n', ' dn', vim.diagnostic.goto_next)
-vim.keymap.set('n', ' dl', vim.diagnostic.setloclist)
 vim.keymap.set('n', ' ds', function() vim.pretty_print(vim.diagnostic.get_namespaces()) end)
+vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
+vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
+vim.keymap.set('n', '[q', ':cprevious<cr>')
+vim.keymap.set('n', ']q', ':cnext<cr>')
+vim.keymap.set('n', '[b', ':bprevious<cr>')
+vim.keymap.set('n', ']b', ':bnext<cr>')
+vim.keymap.set('n', ' m', ':make<cr>')
+vim.keymap.set('n', ' co', ':copen<cr>')
+vim.keymap.set('n', ' cc', ':cclose<cr>')
+vim.keymap.set('n', ' w', ':w<cr>')
+vim.keymap.set('n', ' x', ':x<cr>')
 
-vim.keymap.set('n', ' fv', ':tabedit ~/.config/nvim/init.lua<cr>')
-vim.keymap.set('n', ' sf', ':source %<cr>')
-vim.keymap.set('n', 'n', 'nzzzv')
-vim.keymap.set('n', 'N', 'Nzzzv')
-vim.keymap.set('n', 'J', 'mjJ`j')
-vim.keymap.set('n', 'gb', ':bnext<cr>')
-vim.keymap.set('n', 'gB', ':bprevious<cr>')
+vim.keymap.set('n', ' fv', ':tabedit ~/.config/nvim/init.lua<cr>') -- edit nvim config
+vim.keymap.set('n', ' sf', ':source %<cr>') -- source file
+vim.keymap.set('n', 'n', 'nzzzv')   -- Recenter after each search jump
+vim.keymap.set('n', 'N', 'Nzzzv')   -- Recenter after each search jump
+vim.keymap.set('n', 'J', 'mjJ`j')   -- Keep position after join
 
 vim.o.colorcolumn = '100'           -- Highlight column line
 vim.o.cursorline = true             -- Highlight cursor line
