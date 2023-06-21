@@ -5,6 +5,7 @@
 # Environment Variables --------------------------------------------------------
 export PATH=/usr/local/bin:$PATH
 export PATH=$PATH:./node_modules/.bin
+export PATH="$PATH:/Users/neuan/.dotnet/tools"
 export EDITOR='nvim'
 export GO111MODULE="on"
 export GOPATH=""
@@ -25,6 +26,8 @@ alias l='exa -al'
 alias lt='exa --tree'
 alias ..='cd ..'
 alias ...='cd ../..'
+alias py='python3'
+alias pip='pip3'
 
 alias fv='cd ~/.config/nvim'
 alias ff='vi $(find $HOME/1_projects $HOME/2_areas $HOME/3_resources $HOME/4_archive -print | fzf)'
@@ -52,7 +55,10 @@ export FZF_DEFAULT_COMMAND="find -H $HOME/1_projects/ $HOME/2_areas  $HOME/3_res
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 bindkey -e # emac keybindings
-bindkey '^j' fzf-cd-widget
+bindkey ^j fzf-cd-widget
+foreground() { fg }
+zle -N foreground
+bindkey ^z foreground
 export PATH="$HOME/homebrew/opt/arm-none-eabi-gcc@9/bin:$PATH"
 
 # Commands ---------------------------------------------------------------------
