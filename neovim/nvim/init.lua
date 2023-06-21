@@ -18,8 +18,9 @@ vim.keymap.set('n', ']b', ':bnext<cr>')
 vim.keymap.set('n', ' m', ':make<cr>')
 vim.keymap.set('n', ' co', ':copen<cr>')
 vim.keymap.set('n', ' cc', ':cclose<cr>')
-vim.keymap.set('n', ' w', ':w<cr>')
-vim.keymap.set('n', ' x', ':x<cr>')
+vim.keymap.set('n', ' w', ':write<cr>')
+vim.keymap.set('n', ' x', ':exit<cr>')
+vim.keymap.set('n', ' rr', ':write <bar> :make<cr>')
 
 vim.keymap.set('n', ' fv', ':tabedit ~/.config/nvim/init.lua<cr>') -- edit nvim config
 vim.keymap.set('n', ' sf', ':source %<cr>') -- source file

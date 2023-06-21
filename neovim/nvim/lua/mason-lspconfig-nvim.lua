@@ -35,6 +35,7 @@ return { 'neovim/nvim-lspconfig',
                     telemetry = { enable = false },
                 },
             },
+            omnisharp = {},
             pylsp = {},
             rust_analyzer = { require('rust-tools').setup({}) },
             taplo = {},
@@ -57,9 +58,9 @@ return { 'neovim/nvim-lspconfig',
             end,
             ['jdtls'] = function()
                 require('lspconfig').jdtls.setup({
-                        capabilities = capabilities,
-                        on_attach = on_attach,
-                        root_dir = require('lspconfig').util.root_pattern('pom.xml', 'build.gradle', '.git') or vim.fn.getcwd(),
+                    capabilities = capabilities,
+                    on_attach = on_attach,
+                    root_dir = require('lspconfig').util.root_pattern('pom.xml', 'build.gradle', '.git') or vim.fn.getcwd(),
                 })
             end,
         })

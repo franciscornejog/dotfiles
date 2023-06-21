@@ -4,6 +4,7 @@ return { 'nvim-treesitter/nvim-treesitter',
         require('nvim-treesitter.configs').setup({
             ensure_installed = {
                 'c',
+                'c_sharp',
                 'cpp',
                 'css',
                 'go',
