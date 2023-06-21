@@ -1,8 +1,23 @@
 -- Personal Neovim Configuration
 -- Author:  Francisco Cornejo-Garcia (franciscornejog)
 
-require('plugins')
-require('work')
+-- Set up package maanger
+local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    'git',
+    'clone',
+    '--filter=blob:none',
+    'https://github.com/folke/lazy.nvim.git',
+    '--branch=stable', -- latest stable release
+    lazypath,
+  })
+end
+vim.opt.rtp:prepend(lazypath)
+
+vim.g.mapleader = ' '
+
+require('lazy').setup('plugins')
 require('neoam')
 
 vim.diagnostic.config({ virtual_text = false })
@@ -33,10 +48,10 @@ vim.o.cursorline = true             -- Highlight cursor line
 vim.o.expandtab = true              -- Turn tab to spaces
 vim.o.ignorecase = true             -- Search case insensitive
 vim.o.number = true                 -- Show number lines
-vim.o.shiftwidth = 4                -- Indent with spaces
+vim.o.shiftwidth = 2                -- Indent with spaces
 vim.o.signcolumn = 'yes:1'          -- Show info beside text
 vim.o.smartcase = true              -- Search case sensitive when uppercase
 vim.o.smartindent = true            -- Smart auto indenting
-vim.o.tabstop = 4                   -- Set tab width
+vim.o.tabstop = 2                   -- Set tab width
 vim.o.undofile = true               -- Save undo outside editor
 vim.o.conceallevel = 2              -- enable conceal
