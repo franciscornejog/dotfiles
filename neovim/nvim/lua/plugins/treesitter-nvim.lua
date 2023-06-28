@@ -28,7 +28,7 @@ return {
       indent = { enable = true, disable = {'python'} },
       playground = { enable = true },
     })
-    vim.treesitter.language.register.apexcode = 'java'
+    -- vim.treesitter.language.register.apexcode = 'java'
   end,
   run = function()
     pcall(require('nvim-treesitter.install').update({ with_sync = true }))
