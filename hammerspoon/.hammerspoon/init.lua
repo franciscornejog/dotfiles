@@ -1,3 +1,12 @@
+-- Enable CLI ------------------------------------------------------------------
+local HOMEBREW_PREFIX = '/Users/neuan/homebrew'
+local isInstalled = require('hs.ipc').cliInstall(HOMEBREW_PREFIX)
+if isInstalled then hs.alert.show('CLI Installed') else hs.alert.show('CLI Not Installed')end
+
+function refreshPage()
+    hs.alert.show('Refresh Page')
+end
+
 -- Default Modifier ------------------------------------------------------------
 local function bind(key, callback)
     local modifier = {'alt'}

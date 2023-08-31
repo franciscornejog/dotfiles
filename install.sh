@@ -4,6 +4,7 @@
 
 # System Preferences -----------------------------------------------------------
 read -sp $'Go to System Preferences\n'
+read -sp $'Go to Appearance to change color and size\n'
 read -sp $'Go to Desktop & Screen Saver to set black background\n'
 read -sp $'Go to Dock to hide them\n'
 read -sp $'Go to Users & Groups to change profile picture\n'
@@ -13,6 +14,7 @@ read -sp $'Go back to Terminal\n'
 
 # Defaults Settings ------------------------------------------------------------
 echo 'Removing apps from the Dock...'
+# how to receive yes/no control statement
 defaults write com.apple.dock persistent-apps -array
 killall Dock
 
@@ -21,20 +23,25 @@ echo 'Installing Xcode Command Line Tools...'
 xcode-select --install
 
 echo 'Installing Homebrew...'
+# do the below only on a work machine
 if test ! $(which brew); then
     mkdir -p $HOME/homebrew
     curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C $HOME/homebrew
     eval "$($HOME/homebrew/bin/brew shellenv)"
 fi
+chmod -R go-w "$(brew --prefix)/share/zsh"
+
+# do the below on a personal machine
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+(echo; echo 'eval "$(/opt/homebrew/bin/brew shellenv)"') >> /Users/neto/.zprofile
+eval "$(/opt/homebrew/bin/brew shellenv)"
 
 brew update
 brew analytics off
-chmod -R go-w "$(brew --prefix)/share/zsh"
 
 echo 'Installing packages by Homebrew...'
 packages=(
     alacritty
-    discord
     exa
     fzf
     gh
@@ -46,7 +53,6 @@ packages=(
     slack
     starship
     stow
-    syncthing
     tmux
     zoom
     zsh

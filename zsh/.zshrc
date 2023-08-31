@@ -13,17 +13,14 @@ export JAVA_HOME='$HOME/Library/Java/JavaVirtualMachines/openjdk-17/Contents/Hom
 export TDD_PROJECT_ROOT=/Users/neuan/1_projects/tdd-project
 
 # Apps -------------------------------------------------------------------------
-eval "$($HOME/homebrew/bin/brew shellenv)"
-eval "$(starship init zsh)"
-eval "$(zoxide init zsh)"
+# eval "$(zoxide init zsh)"
 
 # Zsh Plugins ------------------------------------------------------------------
-source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+# source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # Aliases ----------------------------------------------------------------------
 alias vi='nvim'
-alias l='exa -al'
-alias lt='exa --tree'
+alias l='ls --color=auto -al'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias py='python3'
@@ -45,12 +42,6 @@ alias gP='git pull'
 alias gs='git switch'
 alias gS='git status --short --branch'
 
-alias jc='javac -d build/ src/provided/*.java src/treeNodes/*.java src/testers/*.java'
-alias jt='java -cp build testers.JottTokenizerTester'
-alias jp='java -cp build testers.JottParserTester'
-alias jv='java -cp build testers.JottValidatorTester'
-alias js='java -cp build testers.JottSpaceTester'
-
 export FZF_DEFAULT_COMMAND="find -H $HOME/1_projects/ $HOME/2_areas  $HOME/3_resources $HOME/4_archive"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
@@ -59,7 +50,6 @@ bindkey ^j fzf-cd-widget
 foreground() { fg }
 zle -N foreground
 bindkey ^z foreground
-export PATH="$HOME/homebrew/opt/arm-none-eabi-gcc@9/bin:$PATH"
 
 # Commands ---------------------------------------------------------------------
 # create lwc
