@@ -147,8 +147,7 @@ end
 
 local keyToApp = {
     D = 'Alacritty',
-    F = { 'Safari', 'Google Chrome' },
-    S = { 'Discord', 'Slack' },
+    F = 'Safari',
     A = 'Preview',
 }
 
