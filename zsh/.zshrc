@@ -23,7 +23,7 @@ zstyle ':vcs_info:git:*' actionformats '%F{white} (%b|%a%u%c%f)' # for git actio
 export PROMPT='%B%1~%b$vcs_info_msg_0_%(!.#.%(?.:.%F{red}:)%f '
 
 # Zsh Plugins ------------------------------------------------------------------
-# eval "$(zoxide init zsh)"
+eval "$(zoxide init zsh)"
 # source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # Aliases ----------------------------------------------------------------------

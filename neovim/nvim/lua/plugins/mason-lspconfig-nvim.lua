@@ -24,25 +24,25 @@ return {
     capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
     local servers = {
       -- apex_ls = {}, -- Salesforce
-      cssls = {},
-      gopls = {},
-      html = {},
-      jdtls = {}, -- Java
-      lua_ls = {
-        Lua = {
-          diagnostics = {
-            globals = { 'hs', 'vim', 'it', 'describe' }
-          },
-          workspace = { checkThirdParty = false },
-          telemetry = { enable = false },
-        },
-      },
-      omnisharp = {},
-      pylsp = {},
-      rust_analyzer = { require('rust-tools').setup({}) },
-      taplo = {},
-      tsserver = {},
-      svelte = {},
+      -- cssls = {},
+      -- gopls = {},
+      -- html = {},
+      -- jdtls = {}, -- Java
+      -- lua_ls = {
+      --   Lua = {
+      --     diagnostics = {
+      --       globals = { 'hs', 'vim', 'it', 'describe' }
+      --     },
+      --     workspace = { checkThirdParty = false },
+      --     telemetry = { enable = false },
+      --   },
+      -- },
+      -- omnisharp = {},
+      -- pylsp = {},
+      -- rust_analyzer = { require('rust-tools').setup({}) },
+      -- taplo = {},
+      -- tsserver = {},
+      -- svelte = {},
     }
     require('mason').setup()
     local mason_lspconfig = require('mason-lspconfig')
