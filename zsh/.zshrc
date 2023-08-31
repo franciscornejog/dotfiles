@@ -5,17 +5,25 @@
 # Environment Variables --------------------------------------------------------
 export PATH=/usr/local/bin:$PATH
 export PATH=$PATH:./node_modules/.bin
-export PATH="$PATH:/Users/neuan/.dotnet/tools"
 export EDITOR='nvim'
-export GO111MODULE="on"
-export GOPATH=""
 export JAVA_HOME='$HOME/Library/Java/JavaVirtualMachines/openjdk-17/Contents/Home'
-export TDD_PROJECT_ROOT=/Users/neuan/1_projects/tdd-project
 
-# Apps -------------------------------------------------------------------------
-# eval "$(zoxide init zsh)"
+# Prompt -----------------------------------------------------------------------
+autoload -Uz vcs_info                            # autoload vcs_info
+precmd() { vcs_info }                            # show vcs_info as function
+setopt prompt_subst                              # enable substitution in prompt
+zstyle ':vcs_info:*' enable git                  # only enable git
+zstyle ':vcs_info:*' check-for-changes true      # check for unstaged changes
+zstyle ':vcs_info:*' unstagedstr '*'             # set symbol for unstaged
+zstyle ':vcs_info:*' stagedstr '+'               # set symbol for staged
+zstyle ':vcs_info:git:*' formats '%F{white} (%b%u%c%f)'       # set default format
+zstyle ':vcs_info:git:*' actionformats '%F{white} (%b|%a%u%c%f)' # for git action
+
+# export PROMPT='%B%1~%b$vcs_info_msg_0_%(!.#.%(?.:.%F{red}:)%f[$(show_org)]: '
+export PROMPT='%B%1~%b$vcs_info_msg_0_%(!.#.%(?.:.%F{red}:)%f '
 
 # Zsh Plugins ------------------------------------------------------------------
+# eval "$(zoxide init zsh)"
 # source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # Aliases ----------------------------------------------------------------------
