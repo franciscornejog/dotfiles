@@ -81,3 +81,4 @@ scs() {
 # list aliases
 alias sal='sfdx alias:list'
 export PATH="/opt/homebrew/opt/postgresql@15/bin:$PATH"
+export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"

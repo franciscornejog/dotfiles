@@ -1,16 +1,6 @@
--- Enable CLI ------------------------------------------------------------------
-local HOMEBREW_PREFIX = '/Users/neuan/homebrew'
-local isInstalled = require('hs.ipc').cliInstall(HOMEBREW_PREFIX)
-if isInstalled then hs.alert.show('CLI Installed') else hs.alert.show('CLI Not Installed')end
-
-function refreshPage()
-    hs.alert.show('Refresh Page')
-end
-
 -- Default Modifier ------------------------------------------------------------
 local function bind(key, callback)
-    local modifier = {'alt'}
-    hs.hotkey.bind(modifier, key, callback)
+    hs.hotkey.bind('alt', key, callback)
 end
 
 -- Vim Mode in Safari
@@ -100,6 +90,11 @@ local function appWatcher(app, eventType)
             end
             setMode()
             currentMode:enter()
+          else
+            lastMode = currentMode
+            currentMode = nil
+            setMode();
+            lastMode:exit()
         end
     elseif eventType == hs.application.watcher.deactivated then
         if app == 'Safari' then
@@ -146,16 +141,12 @@ local function open(key, application)
 end
 
 local keyToApp = {
-    D = 'Alacritty',
+    D = 'Ghostty',
     F = 'Safari',
     A = 'Preview',
 }
 
 for key, app in pairs(keyToApp) do
-    if type(app) == 'table' then
-        local user = os.getenv('USER')
-        app = user == 'neuan' and app[1] or app[2]
-    end
     open(key, app)
 end
 
@@ -188,6 +179,7 @@ local function reloadConfig(files)
         hs.reload()
     end
 end
+
 local homePath = os.getenv('HOME') .. '/.hammerspoon'
 hs.pathwatcher.new(homePath, reloadConfig):start()
 hs.alert.show('Config loaded')

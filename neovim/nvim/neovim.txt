@@ -1,0 +1,140 @@
+Steps
+1. Download neovim
+2. nvim
+3. :help > :Tutor
+3. :help init.vim - change to init.lua?
+4. :h user-manual - maybe usr_02.txt
+
+File Management
+nvim - start neovim
+nvim <file> - open/create file
+<Ctrl-g>, g<Ctrl-g>
+:edit - open file
+:w - save file, create other file
+:saveas - create file and move to file
+:wq/:x/ZZ - save and quit
+:q!/ZQ/:qa! - quit without saving
+:r - read from another file or !ext cmd
+
+Buffers
+:bn, :bp
+
+Folders
+
+Repeat
+.
+
+Tutor - vim-tutor-mode
+commands, interactive lines, separate json file
+
+Undo / Redo
+u, U, <ctrl-R>
+    jdlifji
+Links
+<Enter>, K
+
+Basic Navigation with Motions - Normal Mode      
+j, k, h, l, w, e, $, 0, ^, -, +, g_
+gg, G
+? Equiv for -, + for end of line?
+word vs WORD - W, E
+
+Intermediate Navigation
+f, F, %, t, T
+;, ,
+
+Jumplist
+<C-o>, <C-i>
+Has jump motions - yet gg not explicitly defined
+
+Intermediate Commands - Change
+r<char>
+R - go into Replace Mode, <Esc>
+gu, gU - lowercase, uppercase
+~ - change case
+<, >, = indent
+J - join lines
+
+Motions with Count
+2w, 5e, 5G, 5gg
+
+Operator-Motions with Count
+d2w
+
+Line Operators
+dd, yy, 3dd
+
+Text Editing - Deletion
+x, X, dw, de, d$/D
+
+Text Objects
+ya", yi"
+
+Plugins 
+
+Registers
+yy or dd to register, p to paste below, P above
+
+Visual selection > Marks
+v, :'<, '>, V, <C-v>
+combine with :w to save parts of a file to another
+
+Go into Insert Mode
+I, i, ce, c$/C, a, A, o, O
+
+Autocomplete in Insert
+<C-n>, <C-p>
+
+Macros - Registers
+q<register>, @<register>, @@/Q
+
+Commands - Command Mode
+Start with :
+Quit - :q :q! :wq
+
+Search
+/, ?, *, #
+Search Navigation - n, N
+:nohlsearch - ? add default doc in help?
+:set ignorecase or \c
+:set hlsearch - ena by def
+:set incsearch - ena by def
+
+Substitute > Ranges
+:#,#s/old/new/gc
+:%s/
+
+External Commands
+:!ls, :!rm FILE
+
+Help
+:help, :helpgrep
+
+Windows
+<C-W> v/s - vert/horiz split
+<C-w> h/j/k/l - move left/down/up/right
+<C-W> w
+<C-w> -/+/_/|
+:split :vsplit
+? best way to find help for the commands above?
+
+Options for Neovim Configuration
+check out h option-list - not obvious, options?
+ruler
+wrapscan
+keywordprg
+
+Search options
+ignorecase ic
+hlsearch hls
+incsearch is
+use noic or invic to disable/invert opt
+
+Create Startup Script
+:call :exe
+mkdir() stdpath() 
+
+Errors with Tutor
+? lesson 7.3 completion step 4 does not autocom to "edit", only "earlier"
+why start with init.vim vs init.lua?
+allow hyperlinks in Tutor?

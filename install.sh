@@ -42,21 +42,20 @@ brew analytics off
 echo 'Installing packages by Homebrew...'
 packages=(
     alacritty
-    exa
-    fzf
-    gh
-    git
+    # fzf
+    # gh
+    # git
     hammerspoon
     neovim
-    ripgrep
-    rust
-    slack
-    starship
+    # ripgrep
+    # rust
+    # slack
     stow
     tmux
-    zoom
-    zsh
-    zsh-autosuggestions
+    tree
+    # zoom
+    # zsh
+    # zsh-autosuggestions
 )
 
 for package in ${packages[@]}; do
@@ -67,8 +66,8 @@ done
 $(brew --prefix)/opt/fzf/install
 
 # Install font
-brew tap homebrew/cask-fonts
-brew install --cask font-jetbrains-mono
+# brew tap homebrew/cask-fonts
+# brew install --cask font-jetbrains-mono
 
 echo 'Starting syncthing...'
 brew services start syncthing
