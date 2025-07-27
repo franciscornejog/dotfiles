@@ -1,0 +1,10 @@
+# Ghostty Configuration
+# Author: Francisco Cornejo Garcia
+
+theme = gruvbox-custom
+font-size = 12
+macos-titlebar-style = tabs
+macos-option-as-alt = true
+window-height = 55
+window-width = 95
+mouse-hide-while-typing = true

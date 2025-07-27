@@ -4,22 +4,19 @@
 # Create config directory
 mkdir -p $HOME/.config
 
-# Home -------------------------------------------------------------------------
 home=(
-    # hammerspoon
+    hammerspoon
     tmux
-    # zsh
+    zsh
+    # vim
 )
 
-# Config -----------------------------------------------------------------------
 config=(
-    alacritty
-    # gh
-    # git
-    # neovim
+    ghostty
+    git
+    neovim
 )
 
-# Stow -------------------------------------------------------------------------
 stow_in() {
     target=$1
     source=$2
