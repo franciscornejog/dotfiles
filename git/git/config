@@ -2,25 +2,5 @@
 # Author: Francisco Cornejo-Garcia (franciscornejog)
 
 [user]
-    name = Francisco Cornejo-Garcia
-    email = franciscornejog@gmail.com
-[github]
-    user = franciscornejog
-[alias]
-  globalconfig = config --list --show-origin
-	co = checkout
-	br = branch
-	ci = commit
-	st = status
-	unstage = restore --staged
-	last = log -1
-[core]
-	editor = nvim
-[init]
-	defaultBranch = main
-[pull]
-	rebase = true
-[color]
-	ui = auto
-[push]
-    autoSetupRemote = true
+name = Francisco Cornejo Garcia
+email = datives_smolder.5p@icloud.com
